@@ -3,22 +3,17 @@
 /**
  * @file
  * TeamSpeak 3 PHP Framework
- *
  * $Id: Channel.php 06/06/2016 22:27:13 scp@Svens-iMac $
- *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
  * @package   TeamSpeak3
  * @version   1.1.24
  * @author    Sven 'ScP' Paulsen
@@ -35,14 +30,14 @@ class TeamSpeak3_Node_Channel extends TeamSpeak3_Node_Abstract
      * The TeamSpeak3_Node_Channel constructor.
      *
      * @param  TeamSpeak3_Node_Server $server
-     * @param  array  $info
-     * @param  string $index
+     * @param  array                  $info
+     * @param  string                 $index
      * @throws TeamSpeak3_Adapter_ServerQuery_Exception
      * @return TeamSpeak3_Node_Channel
      */
     public function __construct(TeamSpeak3_Node_Server $server, array $info, $index = 'cid')
     {
-        $this->parent = $server;
+        $this->parent   = $server;
         $this->nodeInfo = $info;
 
         if (!array_key_exists($index, $this->nodeInfo)) {
@@ -161,7 +156,7 @@ class TeamSpeak3_Node_Channel extends TeamSpeak3_Node_Abstract
     /**
      * Returns a list of permissions defined for a client in the channel.
      *
-     * @param  int $cldbid
+     * @param  int  $cldbid
      * @param  bool $permsid
      * @return array
      */
@@ -282,9 +277,9 @@ class TeamSpeak3_Node_Channel extends TeamSpeak3_Node_Abstract
     /**
      * Returns a list of files and directories stored in the channels file repository.
      *
-     * @param  string  $cpw
-     * @param  string  $path
-     * @param  bool $recursive
+     * @param  string $cpw
+     * @param  string $path
+     * @param  bool   $recursive
      * @return array
      */
     public function fileList($cpw = '', $path = '/', $recursive = false)
@@ -295,8 +290,8 @@ class TeamSpeak3_Node_Channel extends TeamSpeak3_Node_Abstract
     /**
      * Returns detailed information about the specified file stored in the channels file repository.
      *
-     * @param  string  $cpw
-     * @param  string  $name
+     * @param  string $cpw
+     * @param  string $name
      * @return array
      */
     public function fileInfo($cpw = '', $name = '/')
@@ -308,11 +303,11 @@ class TeamSpeak3_Node_Channel extends TeamSpeak3_Node_Abstract
      * Renames a file in the channels file repository. If the two parameters $tcid and $tcpw are specified, the file
      * will be moved into another channels file repository.
      *
-     * @param  string  $cpw
-     * @param  string  $oldname
-     * @param  string  $newname
-     * @param  int $tcid
-     * @param  string  $tcpw
+     * @param  string $cpw
+     * @param  string $oldname
+     * @param  string $newname
+     * @param  int    $tcid
+     * @param  string $tcpw
      * @return void
      */
     public function fileRename($cpw = '', $oldname = '/', $newname = '/', $tcid = null, $tcpw = null)
@@ -325,7 +320,7 @@ class TeamSpeak3_Node_Channel extends TeamSpeak3_Node_Abstract
      *
      * @param  string $cpw
      * @param  string $path
-     * @param mixed $name
+     * @param mixed   $name
      * @return void
      */
     public function fileDelete($cpw = '', $name = '/')
@@ -336,8 +331,8 @@ class TeamSpeak3_Node_Channel extends TeamSpeak3_Node_Abstract
     /**
      * Creates new directory in a channels file repository.
      *
-     * @param  string  $cpw
-     * @param  string  $dirname
+     * @param  string $cpw
+     * @param  string $dirname
      * @return void
      */
     public function dirCreate($cpw = '', $dirname = '/')
@@ -468,10 +463,10 @@ class TeamSpeak3_Node_Channel extends TeamSpeak3_Node_Abstract
     /**
      * Sends a plugin command to all clients in the channel.
      *
-     * @param  string  $plugin
-     * @param  string  $data
-     * @param  string  $cpw
-     * @param  bool $subscribed
+     * @param  string $plugin
+     * @param  string $data
+     * @param  string $cpw
+     * @param  bool   $subscribed
      * @return void
      */
     public function sendPluginCmd($plugin, $data, $cpw = null, $subscribed = false)
@@ -544,7 +539,7 @@ class TeamSpeak3_Node_Channel extends TeamSpeak3_Node_Abstract
     {
         if ($this['channel_maxclients'] != -1 && $this['channel_maxclients'] <= $this['total_clients']) {
             return 'channel_full';
-        } elseif ($this['channel_flag_password']) {
+        } else if ($this['channel_flag_password']) {
             return 'channel_pass';
         } else {
             return 'channel_open';

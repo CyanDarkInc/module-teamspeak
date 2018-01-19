@@ -3,20 +3,16 @@
 /**
  * @file
  * TeamSpeak 3 PHP Framework
- *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
  * @package   TeamSpeak3
  * @author    Sven 'ScP' Paulsen
  * @copyright Copyright (c) 2010 by Planet TeamSpeak. All rights reserved.
@@ -24,7 +20,6 @@
 
 /**
  * @deprecated
- *
  * @class TeamSpeak3_Adapter_Update
  * @brief Provides methods to query the latest TeamSpeak 3 build numbers from the master server.
  */
@@ -107,73 +102,71 @@ class TeamSpeak3_Adapter_Update extends TeamSpeak3_Adapter_Abstract
      * Returns the current build number for a specified update channel. Note that since version
      * 3.0.0, the build number represents an integer timestamp. $channel must be set to one of
      * the following values:.
-     *
      * - stable
      * - beta
      * - alpha
      * - server
      *
-     * @param  string  $channel
+     * @param  string $channel
      * @throws TeamSpeak3_Adapter_Update_Exception
      * @return int
      */
     public function getRev($channel = 'stable')
     {
         switch ($channel) {
-      case 'stable':
-        return isset($this->build_datetimes[0]) ? $this->build_datetimes[0] : null;
+            case 'stable':
+                return isset($this->build_datetimes[0]) ? $this->build_datetimes[0] : null;
 
-      case 'beta':
-        return isset($this->build_datetimes[1]) ? $this->build_datetimes[1] : null;
+            case 'beta':
+                return isset($this->build_datetimes[1]) ? $this->build_datetimes[1] : null;
 
-      case 'alpha':
-        return isset($this->build_datetimes[2]) ? $this->build_datetimes[2] : null;
+            case 'alpha':
+                return isset($this->build_datetimes[2]) ? $this->build_datetimes[2] : null;
 
-      case 'server':
-        return isset($this->build_datetimes[3]) ? $this->build_datetimes[3] : null;
+            case 'server':
+                return isset($this->build_datetimes[3]) ? $this->build_datetimes[3] : null;
 
-      default:
-        throw new TeamSpeak3_Adapter_Update_Exception('invalid update channel identifier (' . $channel . ')');
-    }
+            default:
+                throw new TeamSpeak3_Adapter_Update_Exception('invalid update channel identifier (' . $channel . ')');
+        }
     }
 
     /**
      * Returns the current version string for a specified update channel. $channel must be set to
      * one of the following values:.
-     *
      * - stable
      * - beta
      * - alpha
      * - server
      *
-     * @param  string  $channel
+     * @param  string $channel
      * @throws TeamSpeak3_Adapter_Update_Exception
      * @return int
      */
     public function getVersion($channel = 'stable')
     {
         switch ($channel) {
-      case 'stable':
-        return isset($this->version_strings[0]) ? $this->version_strings[0] : null;
+            case 'stable':
+                return isset($this->version_strings[0]) ? $this->version_strings[0] : null;
 
-      case 'beta':
-        return isset($this->version_strings[1]) ? $this->version_strings[1] : null;
+            case 'beta':
+                return isset($this->version_strings[1]) ? $this->version_strings[1] : null;
 
-      case 'alpha':
-        return isset($this->version_strings[2]) ? $this->version_strings[2] : null;
+            case 'alpha':
+                return isset($this->version_strings[2]) ? $this->version_strings[2] : null;
 
-      case 'server':
-        return isset($this->version_strings[3]) ? $this->version_strings[3] : null;
+            case 'server':
+                return isset($this->version_strings[3]) ? $this->version_strings[3] : null;
 
-      default:
-        throw new TeamSpeak3_Adapter_Update_Exception('invalid update channel identifier (' . $channel . ')');
-    }
+            default:
+                throw new TeamSpeak3_Adapter_Update_Exception('invalid update channel identifier (' . $channel . ')');
+        }
     }
 
     /**
      * Alias for getRev() using the 'stable' update channel.
      *
-     * @param  string  $channel
+     * @param  string $channel
      * @return int
      */
     public function getClientRev()
@@ -184,7 +177,7 @@ class TeamSpeak3_Adapter_Update extends TeamSpeak3_Adapter_Abstract
     /**
      * Alias for getRev() using the 'server' update channel.
      *
-     * @param  string  $channel
+     * @param  string $channel
      * @return int
      */
     public function getServerRev()
@@ -195,7 +188,7 @@ class TeamSpeak3_Adapter_Update extends TeamSpeak3_Adapter_Abstract
     /**
      * Alias for getVersion() using the 'stable' update channel.
      *
-     * @param  string  $channel
+     * @param  string $channel
      * @return int
      */
     public function getClientVersion()
@@ -206,7 +199,7 @@ class TeamSpeak3_Adapter_Update extends TeamSpeak3_Adapter_Abstract
     /**
      * Alias for getVersion() using the 'server' update channel.
      *
-     * @param  string  $channel
+     * @param  string $channel
      * @return int
      */
     public function getServerVersion()

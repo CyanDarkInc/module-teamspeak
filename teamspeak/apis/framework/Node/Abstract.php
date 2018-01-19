@@ -3,22 +3,17 @@
 /**
  * @file
  * TeamSpeak 3 PHP Framework
- *
  * $Id: Abstract.php 06/06/2016 22:27:13 scp@Svens-iMac $
- *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
  * @package   TeamSpeak3
  * @version   1.1.24
  * @author    Sven 'ScP' Paulsen
@@ -64,8 +59,8 @@ abstract class TeamSpeak3_Node_Abstract implements RecursiveIterator, ArrayAcces
     /**
      * Sends a prepared command to the server and returns the result.
      *
-     * @param  string  $cmd
-     * @param  bool $throw
+     * @param  string $cmd
+     * @param  bool   $throw
      * @return TeamSpeak3_Adapter_ServerQuery_Reply
      */
     public function request($cmd, $throw = true)
@@ -152,7 +147,7 @@ abstract class TeamSpeak3_Node_Abstract implements RecursiveIterator, ArrayAcces
     {
         if ($this instanceof TeamSpeak3_Node_Channel && $this->isSpacer()) {
             return $prefix . 'spacer';
-        } elseif ($this instanceof TeamSpeak3_Node_Client && $this['client_type']) {
+        } else if ($this instanceof TeamSpeak3_Node_Client && $this['client_type']) {
             return $prefix . 'query';
         }
 
@@ -264,17 +259,17 @@ abstract class TeamSpeak3_Node_Abstract implements RecursiveIterator, ArrayAcces
 
                 if ($key->contains('_bytes_')) {
                     $info[$key->toString()] = TeamSpeak3_Helper_Convert::bytes($val);
-                } elseif ($key->contains('_bandwidth_')) {
+                } else if ($key->contains('_bandwidth_')) {
                     $info[$key->toString()] = TeamSpeak3_Helper_Convert::bytes($val) . '/s';
-                } elseif ($key->contains('_packets_')) {
+                } else if ($key->contains('_packets_')) {
                     $info[$key->toString()] = number_format($val, null, null, '.');
-                } elseif ($key->contains('_packetloss_')) {
+                } else if ($key->contains('_packetloss_')) {
                     $info[$key->toString()] = sprintf('%01.2f', (float) ($val->toString()) * 100) . '%';
-                } elseif ($key->endsWith('_uptime')) {
+                } else if ($key->endsWith('_uptime')) {
                     $info[$key->toString()] = TeamSpeak3_Helper_Convert::seconds($val);
-                } elseif ($key->endsWith('_version')) {
+                } else if ($key->endsWith('_version')) {
                     $info[$key->toString()] = TeamSpeak3_Helper_Convert::version($val);
-                } elseif ($key->endsWith('_icon_id')) {
+                } else if ($key->endsWith('_icon_id')) {
                     $info[$key->toString()] = $this->iconGetName($key)->filterDigits();
                 }
             }

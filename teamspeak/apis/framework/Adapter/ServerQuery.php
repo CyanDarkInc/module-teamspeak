@@ -3,22 +3,17 @@
 /**
  * @file
  * TeamSpeak 3 PHP Framework
- *
  * $Id: ServerQuery.php 06/06/2016 22:27:13 scp@Svens-iMac $
- *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
  * @package   TeamSpeak3
  * @version   1.1.24
  * @author    Sven 'ScP' Paulsen
@@ -99,8 +94,8 @@ class TeamSpeak3_Adapter_ServerQuery extends TeamSpeak3_Adapter_Abstract
     /**
      * Sends a prepared command to the server and returns the result.
      *
-     * @param  string  $cmd
-     * @param  bool $throw
+     * @param  string $cmd
+     * @param  bool   $throw
      * @throws TeamSpeak3_Adapter_Exception
      * @return TeamSpeak3_Adapter_ServerQuery_Reply
      */
@@ -110,7 +105,7 @@ class TeamSpeak3_Adapter_ServerQuery extends TeamSpeak3_Adapter_Abstract
 
         if (strstr($cmd, "\r") || strstr($cmd, "\n")) {
             throw new TeamSpeak3_Adapter_Exception("illegal characters in command '" . $query . "'");
-        } elseif (in_array($query, $this->block)) {
+        } else if (in_array($query, $this->block)) {
             throw new TeamSpeak3_Adapter_ServerQuery_Exception('command not found', 0x100);
         }
 
@@ -124,7 +119,7 @@ class TeamSpeak3_Adapter_ServerQuery extends TeamSpeak3_Adapter_Abstract
         $rpl = [];
 
         do {
-            $str = $this->getTransport()->readLine();
+            $str   = $this->getTransport()->readLine();
             $rpl[] = $str;
         } while ($str instanceof TeamSpeak3_Helper_String && $str->section(TeamSpeak3::SEPARATOR_CELL) != TeamSpeak3::ERROR);
 
@@ -165,7 +160,7 @@ class TeamSpeak3_Adapter_ServerQuery extends TeamSpeak3_Adapter_Abstract
      */
     public function prepare($cmd, array $params = [])
     {
-        $args = [];
+        $args  = [];
         $cells = [];
 
         foreach ($params as $ident => $value) {
@@ -177,11 +172,11 @@ class TeamSpeak3_Adapter_ServerQuery extends TeamSpeak3_Adapter_Abstract
                 for ($i = 0; $i < count($value); $i++) {
                     if ($value[$i] === null) {
                         continue;
-                    } elseif ($value[$i] === false) {
+                    } else if ($value[$i] === false) {
                         $value[$i] = 0x00;
-                    } elseif ($value[$i] === true) {
+                    } else if ($value[$i] === true) {
                         $value[$i] = 0x01;
-                    } elseif ($value[$i] instanceof TeamSpeak3_Node_Abstract) {
+                    } else if ($value[$i] instanceof TeamSpeak3_Node_Abstract) {
                         $value[$i] = $value[$i]->getId();
                     }
 
@@ -190,11 +185,11 @@ class TeamSpeak3_Adapter_ServerQuery extends TeamSpeak3_Adapter_Abstract
             } else {
                 if ($value === null) {
                     continue;
-                } elseif ($value === false) {
+                } else if ($value === false) {
                     $value = 0x00;
-                } elseif ($value === true) {
+                } else if ($value === true) {
                     $value = 0x01;
-                } elseif ($value instanceof TeamSpeak3_Node_Abstract) {
+                } else if ($value instanceof TeamSpeak3_Node_Abstract) {
                     $value = $value->getId();
                 }
 

@@ -3,20 +3,16 @@
 /**
  * @file
  * TeamSpeak 3 PHP Framework
- *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
  * @package   TeamSpeak3
  * @author    Sven 'ScP' Paulsen
  * @copyright Copyright (c) Planet TeamSpeak. All rights reserved.
@@ -60,9 +56,9 @@ class TeamSpeak3_Helper_Convert
     /**
      * Converts seconds/milliseconds to a human readable value.
      *
-     * @param  int $seconds
-     * @param  bool $is_ms
-     * @param  string  $format
+     * @param  int    $seconds
+     * @param  bool   $is_ms
+     * @param  string $format
      * @return string
      */
     public static function seconds($seconds, $is_ms = false, $format = '%dD %02d:%02d:%02d')
@@ -248,7 +244,7 @@ class TeamSpeak3_Helper_Convert
     /**
      * Converts a given log level ID to a human readable name and vice versa.
      *
-     * @param  mixed  $level
+     * @param  mixed $level
      * @return string
      */
     public static function logLevel($level)
@@ -380,14 +376,7 @@ class TeamSpeak3_Helper_Convert
             return 'image/svg+xml';
         }
 
-        $type = [
-      1 => 'image/jpeg',
-      2 => 'image/gif',
-      3 => 'image/png',
-      4 => 'image/x-windows-bmp',
-      5 => 'image/tiff',
-      6 => 'image/x-ilbm',
-    ];
+        $type = [1 => 'image/jpeg', 2 => 'image/gif', 3 => 'image/png', 4 => 'image/x-windows-bmp', 5 => 'image/tiff', 6 => 'image/x-ilbm',];
 
         return $type[count($matches) - 1];
     }

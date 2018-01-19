@@ -3,22 +3,17 @@
 /**
  * @file
  * TeamSpeak 3 PHP Framework
- *
  * $Id: Servergroup.php 06/06/2016 22:27:13 scp@Svens-iMac $
- *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
  * @package   TeamSpeak3
  * @version   1.1.24
  * @author    Sven 'ScP' Paulsen
@@ -35,14 +30,14 @@ class TeamSpeak3_Node_Servergroup extends TeamSpeak3_Node_Abstract
      * The TeamSpeak3_Node_Servergroup constructor.
      *
      * @param  TeamSpeak3_Node_Server $server
-     * @param  array  $info
-     * @param  string $index
+     * @param  array                  $info
+     * @param  string                 $index
      * @throws TeamSpeak3_Node_Exception
      * @return TeamSpeak3_Node_Servergroup
      */
     public function __construct(TeamSpeak3_Node_Server $server, array $info, $index = 'sgid')
     {
-        $this->parent = $server;
+        $this->parent   = $server;
         $this->nodeInfo = $info;
 
         if (!array_key_exists($index, $this->nodeInfo)) {
@@ -55,7 +50,7 @@ class TeamSpeak3_Node_Servergroup extends TeamSpeak3_Node_Abstract
     /**
      * Renames the server group specified.
      *
-     * @param  string  $name
+     * @param  string $name
      * @return void
      */
     public function rename($name)
@@ -78,9 +73,9 @@ class TeamSpeak3_Node_Servergroup extends TeamSpeak3_Node_Abstract
     /**
      * Creates a copy of the server group and returns the new groups ID.
      *
-     * @param  string  $name
-     * @param  int $tsgid
-     * @param  int $type
+     * @param  string $name
+     * @param  int    $tsgid
+     * @param  int    $type
      * @return int
      */
     public function copy($name = null, $tsgid = 0, $type = TeamSpeak3::GROUP_DBTYPE_REGULAR)
@@ -199,8 +194,8 @@ class TeamSpeak3_Node_Servergroup extends TeamSpeak3_Node_Abstract
     /**
      * Creates a new privilege key (token) for the server group and returns the key.
      *
-     * @param  string  $description
-     * @param  string  $customset
+     * @param  string $description
+     * @param  string $customset
      * @return TeamSpeak3_Helper_String
      */
     public function privilegeKeyCreate($description = null, $customset = null)

@@ -3,22 +3,17 @@
 /**
  * @file
  * TeamSpeak 3 PHP Framework
- *
  * $Id: Uri.php 06/06/2016 22:27:13 scp@Svens-iMac $
- *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
  * @package   TeamSpeak3
  * @version   1.1.24
  * @author    Sven 'ScP' Paulsen
@@ -106,21 +101,21 @@ class TeamSpeak3_Helper_Uri
         $uri = explode(':', (string) $uri, 2);
 
         $this->scheme = strtolower($uri[0]);
-        $uriString = isset($uri[1]) ? $uri[1] : '';
+        $uriString    = isset($uri[1]) ? $uri[1] : '';
 
         if (!ctype_alnum($this->scheme)) {
             throw new TeamSpeak3_Helper_Exception("invalid URI scheme '" . $this->scheme . "' supplied");
         }
 
         /* grammar rules for validation */
-        $this->regex['alphanum'] = "[^\W_]";
-        $this->regex['escaped'] = "(?:%[\da-fA-F]{2})";
-        $this->regex['mark'] = "[-_.!~*'()\[\]]";
-        $this->regex['reserved'] = "[;\/?:@&=+$,]";
+        $this->regex['alphanum']   = "[^\W_]";
+        $this->regex['escaped']    = "(?:%[\da-fA-F]{2})";
+        $this->regex['mark']       = "[-_.!~*'()\[\]]";
+        $this->regex['reserved']   = "[;\/?:@&=+$,]";
         $this->regex['unreserved'] = '(?:' . $this->regex['alphanum'] . '|' . $this->regex['mark'] . ')';
-        $this->regex['segment'] = '(?:(?:' . $this->regex['unreserved'] . '|' . $this->regex['escaped'] . '|[:@&=+$,;])*)';
-        $this->regex['path'] = "(?:\/" . $this->regex['segment'] . '?)+';
-        $this->regex['uric'] = '(?:' . $this->regex['reserved'] . '|' . $this->regex['unreserved'] . '|' . $this->regex['escaped'] . ')';
+        $this->regex['segment']    = '(?:(?:' . $this->regex['unreserved'] . '|' . $this->regex['escaped'] . '|[:@&=+$,;])*)';
+        $this->regex['path']       = "(?:\/" . $this->regex['segment'] . '?)+';
+        $this->regex['uric']       = '(?:' . $this->regex['reserved'] . '|' . $this->regex['unreserved'] . '|' . $this->regex['escaped'] . ')';
 
         if (strlen($uriString) > 0) {
             $this->parseUri($uriString);
@@ -150,8 +145,8 @@ class TeamSpeak3_Helper_Uri
             return;
         }
 
-        $this->path = (isset($matches[4])) ? $matches[4] : '';
-        $this->query = (isset($matches[6])) ? $matches[6] : '';
+        $this->path     = (isset($matches[4])) ? $matches[4] : '';
+        $this->query    = (isset($matches[6])) ? $matches[6] : '';
         $this->fragment = (isset($matches[8])) ? $matches[8] : '';
 
         $status = @preg_match('~^(([^:@]*)(:([^@]*))?@)?((?(?=[[])[[][^]]+[]]|[^:]+))(:(.*))?$~', (isset($matches[3])) ? $matches[3] : '', $matches);
@@ -210,7 +205,7 @@ class TeamSpeak3_Helper_Uri
     /**
      * Returns the scheme.
      *
-     * @param  mixed default
+     * @param            mixed default
      * @param null|mixed $default
      * @return TeamSpeak3_Helper_String
      */
@@ -237,7 +232,7 @@ class TeamSpeak3_Helper_Uri
         }
 
         $pattern = '/^(' . $this->regex['alphanum'] . '|' . $this->regex['mark'] . '|' . $this->regex['escaped'] . '|[;:&=+$,])+$/';
-        $status = @preg_match($pattern, $username);
+        $status  = @preg_match($pattern, $username);
 
         if ($status === false) {
             throw new TeamSpeak3_Helper_Exception('URI username validation failed');
@@ -259,7 +254,7 @@ class TeamSpeak3_Helper_Uri
     /**
      * Returns the username.
      *
-     * @param  mixed default
+     * @param            mixed default
      * @param null|mixed $default
      * @return TeamSpeak3_Helper_String
      */
@@ -286,7 +281,7 @@ class TeamSpeak3_Helper_Uri
         }
 
         $pattern = '/^(' . $this->regex['alphanum'] . '|' . $this->regex['mark'] . '|' . $this->regex['escaped'] . '|[;:&=+$,])+$/';
-        $status = @preg_match($pattern, $password);
+        $status  = @preg_match($pattern, $password);
 
         if ($status === false) {
             throw new TeamSpeak3_Helper_Exception('URI password validation failed');
@@ -308,7 +303,7 @@ class TeamSpeak3_Helper_Uri
     /**
      * Returns the password.
      *
-     * @param  mixed default
+     * @param            mixed default
      * @param null|mixed $default
      * @return TeamSpeak3_Helper_String
      */
@@ -345,7 +340,7 @@ class TeamSpeak3_Helper_Uri
     /**
      * Returns the host.
      *
-     * @param  mixed default
+     * @param            mixed default
      * @param null|mixed $default
      * @return TeamSpeak3_Helper_String
      */
@@ -382,7 +377,7 @@ class TeamSpeak3_Helper_Uri
     /**
      * Returns the port.
      *
-     * @param  mixed default
+     * @param            mixed default
      * @param null|mixed $default
      * @return int
      */
@@ -409,7 +404,7 @@ class TeamSpeak3_Helper_Uri
         }
 
         $pattern = '/^' . $this->regex['path'] . '$/';
-        $status = @preg_match($pattern, $path);
+        $status  = @preg_match($pattern, $path);
 
         if ($status === false) {
             throw new TeamSpeak3_Helper_Exception('URI path validation failed');
@@ -431,7 +426,7 @@ class TeamSpeak3_Helper_Uri
     /**
      * Returns the path.
      *
-     * @param  mixed default
+     * @param            mixed default
      * @param null|mixed $default
      * @return TeamSpeak3_Helper_String
      */
@@ -458,7 +453,7 @@ class TeamSpeak3_Helper_Uri
         }
 
         $pattern = '/^' . $this->regex['uric'] . '*$/';
-        $status = @preg_match($pattern, $query);
+        $status  = @preg_match($pattern, $query);
 
         if ($status === false) {
             throw new TeamSpeak3_Helper_Exception('URI query string validation failed');
@@ -531,7 +526,7 @@ class TeamSpeak3_Helper_Uri
 
             if (ctype_digit($val)) {
                 return (int) $val;
-            } elseif (is_string($val)) {
+            } else if (is_string($val)) {
                 return new TeamSpeak3_Helper_String($val);
             } else {
                 return $val;
@@ -559,7 +554,7 @@ class TeamSpeak3_Helper_Uri
         }
 
         $pattern = '/^' . $this->regex['uric'] . '*$/';
-        $status = @preg_match($pattern, $fragment);
+        $status  = @preg_match($pattern, $fragment);
 
         if ($status === false) {
             throw new TeamSpeak3_Helper_Exception('URI fragment validation failed');
@@ -581,7 +576,7 @@ class TeamSpeak3_Helper_Uri
     /**
      * Returns the fragment.
      *
-     * @param  mixed default
+     * @param            mixed default
      * @param null|mixed $default
      * @return TeamSpeak3_Helper_String
      */

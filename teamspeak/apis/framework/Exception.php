@@ -3,22 +3,17 @@
 /**
  * @file
  * TeamSpeak 3 PHP Framework
- *
  * $Id: Exception.php 06/06/2016 22:27:13 scp@Svens-iMac $
- *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
  * @package   TeamSpeak3
  * @version   1.1.24
  * @author    Sven 'ScP' Paulsen
@@ -41,8 +36,8 @@ class TeamSpeak3_Exception extends Exception
     /**
      * The TeamSpeak3_Exception constructor.
      *
-     * @param  string  $mesg
-     * @param  int $code
+     * @param  string $mesg
+     * @param  int    $code
      * @return TeamSpeak3_Exception
      */
     public function __construct($mesg, $code = 0x00)
@@ -64,12 +59,7 @@ class TeamSpeak3_Exception extends Exception
      */
     protected function prepareCustomMessage(TeamSpeak3_Helper_String $mesg)
     {
-        $args = [
-      'code' => $this->getCode(),
-      'mesg' => $this->getMessage(),
-      'line' => $this->getLine(),
-      'file' => $this->getFile(),
-    ];
+        $args = ['code' => $this->getCode(), 'mesg' => $this->getMessage(), 'line' => $this->getLine(), 'file' => $this->getFile(),];
 
         return $mesg->arg($args)->toString();
     }
@@ -77,8 +67,8 @@ class TeamSpeak3_Exception extends Exception
     /**
      * Registers a custom error message to $code.
      *
-     * @param  int $code
-     * @param  string  $mesg
+     * @param  int    $code
+     * @param  string $mesg
      * @throws TeamSpeak3_Exception
      * @return void
      */

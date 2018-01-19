@@ -3,22 +3,17 @@
 /**
  * @file
  * TeamSpeak 3 PHP Framework
- *
  * $Id: Host.php 06/06/2016 22:27:13 scp@Svens-iMac $
- *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
  * @package   TeamSpeak3
  * @version   1.1.24
  * @author    Sven 'ScP' Paulsen
@@ -130,7 +125,7 @@ class TeamSpeak3_Node_Host extends TeamSpeak3_Node_Abstract
     /**
      * Selects a virtual server by ID to allow further interaction.
      *
-     * @param  int $sid
+     * @param  int  $sid
      * @param  bool $virtual
      * @return void
      */
@@ -159,7 +154,7 @@ class TeamSpeak3_Node_Host extends TeamSpeak3_Node_Abstract
     /**
      * Alias for serverSelect().
      *
-     * @param  int $sid
+     * @param  int  $sid
      * @param  bool $virtual
      * @return void
      */
@@ -171,7 +166,7 @@ class TeamSpeak3_Node_Host extends TeamSpeak3_Node_Abstract
     /**
      * Selects a virtual server by UDP port to allow further interaction.
      *
-     * @param  int $port
+     * @param  int  $port
      * @param  bool $virtual
      * @return void
      */
@@ -620,7 +615,6 @@ class TeamSpeak3_Node_Host extends TeamSpeak3_Node_Abstract
 
     /**
      * Returns the internal category of the permission matching the given ID.
-     *
      * All pre-3.0.7 permission IDs are are 2 bytes wide. The first byte identifies the category while
      * the second byte is the permission count within that group.
      *
@@ -658,7 +652,6 @@ class TeamSpeak3_Node_Host extends TeamSpeak3_Node_Abstract
 
     /**
      * Returns the internal ID of the i_needed_modify_power_* or grant permission.
-     *
      * Every permission has an associated i_needed_modify_power_* permission, for example b_client_ban_create has an
      * associated permission called i_needed_modify_power_client_ban_create.
      *
@@ -762,8 +755,8 @@ class TeamSpeak3_Node_Host extends TeamSpeak3_Node_Abstract
     /**
      * Displays a specified number of entries (1-100) from the servers log.
      *
-     * @param  int $lines
-     * @param  int $begin_pos
+     * @param  int  $lines
+     * @param  int  $begin_pos
      * @param  bool $reverse
      * @param  bool $instance
      * @return array
@@ -776,8 +769,8 @@ class TeamSpeak3_Node_Host extends TeamSpeak3_Node_Abstract
     /**
      * Writes a custom entry into the server instance log.
      *
-     * @param  string  $logmsg
-     * @param  int $loglevel
+     * @param  string $logmsg
+     * @param  int    $loglevel
      * @return void
      */
     public function logAdd($logmsg, $loglevel = TeamSpeak3::LOGLEVEL_INFO)

@@ -3,22 +3,17 @@
 /**
  * @file
  * TeamSpeak 3 PHP Framework
- *
  * $Id: FileTransfer.php 06/06/2016 22:27:13 scp@Svens-iMac $
- *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
  * @package   TeamSpeak3
  * @version   1.1.24
  * @author    Sven 'ScP' Paulsen
@@ -82,9 +77,9 @@ class TeamSpeak3_Adapter_FileTransfer extends TeamSpeak3_Adapter_Abstract
     /**
      * Sends the content of a file to the server.
      *
-     * @param  string  $ftkey
-     * @param  int $seek
-     * @param  string  $data
+     * @param  string $ftkey
+     * @param  int    $seek
+     * @param  string $data
      * @throws TeamSpeak3_Adapter_FileTransfer_Exception
      * @return void
      */
@@ -121,9 +116,9 @@ class TeamSpeak3_Adapter_FileTransfer extends TeamSpeak3_Adapter_Abstract
     /**
      * Returns the content of a downloaded file as a TeamSpeak3_Helper_String object.
      *
-     * @param  string  $ftkey
-     * @param  int $size
-     * @param  bool $passthru
+     * @param  string $ftkey
+     * @param  int    $size
+     * @param  bool   $passthru
      * @throws TeamSpeak3_Adapter_FileTransfer_Exception
      * @return TeamSpeak3_Helper_String
      */

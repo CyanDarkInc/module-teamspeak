@@ -3,22 +3,17 @@
 /**
  * @file
  * TeamSpeak 3 PHP Framework
- *
  * $Id: Text.php 06/06/2016 22:27:13 scp@Svens-iMac $
- *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
  * @package   TeamSpeak3
  * @version   1.1.24
  * @author    Sven 'ScP' Paulsen
@@ -119,7 +114,7 @@ class TeamSpeak3_Viewer_Html implements TeamSpeak3_Viewer_Interface
      * Returns the code needed to display a node in a TeamSpeak 3 viewer.
      *
      * @param  TeamSpeak3_Node_Abstract $node
-     * @param  array $siblings
+     * @param  array                    $siblings
      * @return string
      */
     public function fetchObject(TeamSpeak3_Node_Abstract $node, array $siblings = [])
@@ -127,21 +122,7 @@ class TeamSpeak3_Viewer_Html implements TeamSpeak3_Viewer_Interface
         $this->currObj = $node;
         $this->currSib = $siblings;
 
-        $args = [
-      $this->getContainerIdent(),
-      $this->getContainerClass(),
-      $this->getContainerSummary(),
-      $this->getRowClass(),
-      $this->getPrefixClass(),
-      $this->getPrefix(),
-      $this->getCorpusClass(),
-      $this->getCorpusTitle(),
-      $this->getCorpusIcon(),
-      $this->getCorpusName(),
-      $this->getSuffixClass(),
-      $this->getSuffixIcon(),
-      $this->getSuffixFlag(),
-    ];
+        $args = [$this->getContainerIdent(), $this->getContainerClass(), $this->getContainerSummary(), $this->getRowClass(), $this->getPrefixClass(), $this->getPrefix(), $this->getCorpusClass(), $this->getCorpusTitle(), $this->getCorpusIcon(), $this->getCorpusName(), $this->getSuffixClass(), $this->getSuffixIcon(), $this->getSuffixFlag(),];
 
         return TeamSpeak3_Helper_String::factory($this->pattern)->arg($args);
     }
@@ -236,40 +217,40 @@ class TeamSpeak3_Viewer_Html implements TeamSpeak3_Viewer_Interface
 
         if ($this->currObj instanceof TeamSpeak3_Node_Channel && $this->currObj->isSpacer()) {
             switch ($this->currObj->spacerGetType()) {
-        case (string) TeamSpeak3::SPACER_SOLIDLINE:
-          $extras .= ' solidline';
-          break;
+                case (string) TeamSpeak3::SPACER_SOLIDLINE:
+                    $extras .= ' solidline';
+                    break;
 
-        case (string) TeamSpeak3::SPACER_DASHLINE:
-          $extras .= ' dashline';
-          break;
+                case (string) TeamSpeak3::SPACER_DASHLINE:
+                    $extras .= ' dashline';
+                    break;
 
-        case (string) TeamSpeak3::SPACER_DASHDOTLINE:
-          $extras .= ' dashdotline';
-          break;
+                case (string) TeamSpeak3::SPACER_DASHDOTLINE:
+                    $extras .= ' dashdotline';
+                    break;
 
-        case (string) TeamSpeak3::SPACER_DASHDOTDOTLINE:
-          $extras .= ' dashdotdotline';
-          break;
+                case (string) TeamSpeak3::SPACER_DASHDOTDOTLINE:
+                    $extras .= ' dashdotdotline';
+                    break;
 
-        case (string) TeamSpeak3::SPACER_DOTLINE:
-          $extras .= ' dotline';
-          break;
-      }
+                case (string) TeamSpeak3::SPACER_DOTLINE:
+                    $extras .= ' dotline';
+                    break;
+            }
 
             switch ($this->currObj->spacerGetAlign()) {
-        case TeamSpeak3::SPACER_ALIGN_CENTER:
-          $extras .= ' center';
-          break;
+                case TeamSpeak3::SPACER_ALIGN_CENTER:
+                    $extras .= ' center';
+                    break;
 
-        case TeamSpeak3::SPACER_ALIGN_RIGHT:
-          $extras .= ' right';
-          break;
+                case TeamSpeak3::SPACER_ALIGN_RIGHT:
+                    $extras .= ' right';
+                    break;
 
-        case TeamSpeak3::SPACER_ALIGN_LEFT:
-          $extras .= ' left';
-          break;
-      }
+                case TeamSpeak3::SPACER_ALIGN_LEFT:
+                    $extras .= ' left';
+                    break;
+            }
         }
 
         return 'corpus ' . $this->currObj->getClass(null) . $extras;
@@ -285,11 +266,11 @@ class TeamSpeak3_Viewer_Html implements TeamSpeak3_Viewer_Interface
     {
         if ($this->currObj instanceof TeamSpeak3_Node_Server) {
             return 'ID: ' . $this->currObj->getId() . ' | Clients: ' . $this->currObj->clientCount() . '/' . $this->currObj['virtualserver_maxclients'] . ' | Uptime: ' . TeamSpeak3_Helper_Convert::seconds($this->currObj['virtualserver_uptime']);
-        } elseif ($this->currObj instanceof TeamSpeak3_Node_Channel && !$this->currObj->isSpacer()) {
+        } else if ($this->currObj instanceof TeamSpeak3_Node_Channel && !$this->currObj->isSpacer()) {
             return 'ID: ' . $this->currObj->getId() . ' | Codec: ' . TeamSpeak3_Helper_Convert::codec($this->currObj['channel_codec']) . ' | Quality: ' . $this->currObj['channel_codec_quality'];
-        } elseif ($this->currObj instanceof TeamSpeak3_Node_Client) {
+        } else if ($this->currObj instanceof TeamSpeak3_Node_Client) {
             return 'ID: ' . $this->currObj->getId() . ' | Version: ' . TeamSpeak3_Helper_Convert::versionShort($this->currObj['client_version']) . ' | Platform: ' . $this->currObj['client_platform'];
-        } elseif ($this->currObj instanceof TeamSpeak3_Node_Servergroup || $this->currObj instanceof TeamSpeak3_Node_Channelgroup) {
+        } else if ($this->currObj instanceof TeamSpeak3_Node_Servergroup || $this->currObj instanceof TeamSpeak3_Node_Channelgroup) {
             return 'ID: ' . $this->currObj->getId() . ' | Type: ' . TeamSpeak3_Helper_Convert::groupType($this->currObj['type']) . ' (' . ($this->currObj['savedb'] ? 'Permanent' : 'Temporary') . ')';
         }
     }
@@ -338,7 +319,7 @@ class TeamSpeak3_Viewer_Html implements TeamSpeak3_Viewer_Interface
             foreach ($this->currObj->memberOf() as $group) {
                 if ($group->getProperty('namemode') == TeamSpeak3::GROUP_NAMEMODE_BEFORE) {
                     $before[] = '[' . htmlspecialchars($group['name']) . ']';
-                } elseif ($group->getProperty('namemode') == TeamSpeak3::GROUP_NAMEMODE_BEHIND) {
+                } else if ($group->getProperty('namemode') == TeamSpeak3::GROUP_NAMEMODE_BEHIND) {
                     $behind[] = '[' . htmlspecialchars($group['name']) . ']';
                 }
             }
@@ -370,9 +351,9 @@ class TeamSpeak3_Viewer_Html implements TeamSpeak3_Viewer_Interface
     {
         if ($this->currObj instanceof TeamSpeak3_Node_Server) {
             return $this->getSuffixIconServer();
-        } elseif ($this->currObj instanceof TeamSpeak3_Node_Channel) {
+        } else if ($this->currObj instanceof TeamSpeak3_Node_Channel) {
             return $this->getSuffixIconChannel();
-        } elseif ($this->currObj instanceof TeamSpeak3_Node_Client) {
+        } else if ($this->currObj instanceof TeamSpeak3_Node_Client) {
             return $this->getSuffixIconClient();
         }
     }
@@ -406,7 +387,7 @@ class TeamSpeak3_Viewer_Html implements TeamSpeak3_Viewer_Interface
                 } else {
                     $html .= $this->getImage($this->ftclient . '?ftdata=' . base64_encode(serialize($download)), 'Server Icon', null, false);
                 }
-            } elseif (in_array($this->currObj['virtualserver_icon_id'], $this->cachedIcons)) {
+            } else if (in_array($this->currObj['virtualserver_icon_id'], $this->cachedIcons)) {
                 $html .= $this->getImage('group_icon_' . $this->currObj['virtualserver_icon_id'] . '.png', 'Server Icon');
             }
         }
@@ -463,7 +444,7 @@ class TeamSpeak3_Viewer_Html implements TeamSpeak3_Viewer_Interface
                 } else {
                     $html .= $this->getImage($this->ftclient . '?ftdata=' . base64_encode(serialize($download)), 'Channel Icon', null, false);
                 }
-            } elseif (in_array($this->currObj['channel_icon_id'], $this->cachedIcons)) {
+            } else if (in_array($this->currObj['channel_icon_id'], $this->cachedIcons)) {
                 $html .= $this->getImage('group_icon_' . $this->currObj['channel_icon_id'] . '.png', 'Channel Icon');
             }
         }
@@ -491,7 +472,7 @@ class TeamSpeak3_Viewer_Html implements TeamSpeak3_Viewer_Interface
 
         if ($this->currObj['client_is_talker']) {
             $html .= $this->getImage('client_talker.png', 'Talk Power granted');
-        } elseif ($cntp = $this->currObj->getParent()->channelGetById($this->currObj['cid'])->channel_needed_talk_power) {
+        } else if ($cntp = $this->currObj->getParent()->channelGetById($this->currObj['cid'])->channel_needed_talk_power) {
             if ($cntp > $this->currObj['client_talk_power']) {
                 $html .= $this->getImage('client_mic_muted.png', 'Insufficient Talk Power');
             }
@@ -499,7 +480,7 @@ class TeamSpeak3_Viewer_Html implements TeamSpeak3_Viewer_Interface
 
         // Get current groups the client is a member of.
         // Shift off first group (channel group), leaving only server groups.
-        $groups = $this->currObj->memberOf();
+        $groups       = $this->currObj->memberOf();
         $clientGroups = [$groups[0]];
         unset($groups[0]);
 
@@ -540,7 +521,7 @@ class TeamSpeak3_Viewer_Html implements TeamSpeak3_Viewer_Interface
                 } else {
                     $html .= $this->getImage($this->ftclient . '?ftdata=' . base64_encode(serialize($download)), $group . ' [' . $type . ']', null, false);
                 }
-            } elseif (in_array($group['iconid'], $this->cachedIcons)) {
+            } else if (in_array($group['iconid'], $this->cachedIcons)) {
                 $html .= $this->getImage('group_icon_' . $group['iconid'] . '.png', $group . ' [' . $type . ']');
             }
         }
@@ -564,7 +545,7 @@ class TeamSpeak3_Viewer_Html implements TeamSpeak3_Viewer_Interface
                 } else {
                     $html .= $this->getImage($this->ftclient . '?ftdata=' . base64_encode(serialize($download)), 'Client Icon', null, false);
                 }
-            } elseif (in_array($this->currObj['client_icon_id'], $this->cachedIcons)) {
+            } else if (in_array($this->currObj['client_icon_id'], $this->cachedIcons)) {
                 $html .= $this->getImage('group_icon_' . $this->currObj['client_icon_id'] . '.png', 'Client Icon');
             }
         }
@@ -592,11 +573,11 @@ class TeamSpeak3_Viewer_Html implements TeamSpeak3_Viewer_Interface
     /**
      * Returns the code to display a custom HTML img tag.
      *
-     * @param  string  $name
-     * @param  string  $text
-     * @param  string  $class
-     * @param  bool $iconpath
-     * @param  bool $flagpath
+     * @param  string $name
+     * @param  string $text
+     * @param  string $class
+     * @param  bool   $iconpath
+     * @param  bool   $flagpath
      * @return string
      */
     protected function getImage($name, $text = '', $class = null, $iconpath = true, $flagpath = false)

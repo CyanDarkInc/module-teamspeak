@@ -34,10 +34,11 @@ class TeamspeakApi
 
     /**
      * Initializes the class.
-     * @param mixed $hostname
-     * @param mixed $username
-     * @param mixed $password
-     * @param mixed $port
+     * 
+     * @param string $hostname The TeamSpeak server hostname.
+     * @param string $username The TeamSpeak server username.
+     * @param string $password The TeamSpeak server password.
+     * @param int $port The TeamSpeak server port.
      */
     public function __construct($hostname, $username, $password, $port = 10011)
     {

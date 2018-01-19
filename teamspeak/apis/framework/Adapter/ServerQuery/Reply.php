@@ -3,22 +3,17 @@
 /**
  * @file
  * TeamSpeak 3 PHP Framework
- *
  * $Id: Reply.php 06/06/2016 22:27:13 scp@Svens-iMac $
- *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
  * @package   TeamSpeak3
  * @version   1.1.24
  * @author    Sven 'ScP' Paulsen
@@ -76,9 +71,9 @@ class TeamSpeak3_Adapter_ServerQuery_Reply
     /**
      * Creates a new TeamSpeak3_Adapter_ServerQuery_Reply object.
      *
-     * @param  array   $rpl
-     * @param  string  $cmd
-     * @param  bool $exp
+     * @param  array                $rpl
+     * @param  string               $cmd
+     * @param  bool                 $exp
      * @param  TeamSpeak3_Node_Host $con
      * @return TeamSpeak3_Adapter_ServerQuery_Reply
      */
@@ -181,7 +176,7 @@ class TeamSpeak3_Adapter_ServerQuery_Reply
      * Returns a multi-dimensional assoc array containing the reply splitted in multiple rows and columns.
      * The identifier specified by key will be used while indexing the array.
      *
-     * @param  $key
+     * @param       $key
      * @param mixed $ident
      * @return array
      */
@@ -292,7 +287,7 @@ class TeamSpeak3_Adapter_ServerQuery_Reply
                 } else {
                     $suffix = ' (failed on ' . $this->cmd->section(TeamSpeak3::SEPARATOR_CELL) . ' ' . $permid . '/0x' . strtoupper(dechex($permid)) . ')';
                 }
-            } elseif ($details = $this->getErrorProperty('extra_msg')) {
+            } else if ($details = $this->getErrorProperty('extra_msg')) {
                 $suffix = ' (' . trim($details) . ')';
             } else {
                 $suffix = '';
@@ -313,7 +308,7 @@ class TeamSpeak3_Adapter_ServerQuery_Reply
         foreach ($rpl as $key => $val) {
             if ($val->startsWith(TeamSpeak3::GREET)) {
                 unset($rpl[$key]);
-            } elseif ($val->startsWith(TeamSpeak3::EVENT)) {
+            } else if ($val->startsWith(TeamSpeak3::EVENT)) {
                 $this->evt[] = new TeamSpeak3_Adapter_ServerQuery_Event($rpl[$key], $this->con);
                 unset($rpl[$key]);
             }

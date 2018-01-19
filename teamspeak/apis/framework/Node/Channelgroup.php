@@ -3,22 +3,17 @@
 /**
  * @file
  * TeamSpeak 3 PHP Framework
- *
  * $Id: Channelgroup.php 06/06/2016 22:27:13 scp@Svens-iMac $
- *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
  * @package   TeamSpeak3
  * @version   1.1.24
  * @author    Sven 'ScP' Paulsen
@@ -35,14 +30,14 @@ class TeamSpeak3_Node_Channelgroup extends TeamSpeak3_Node_Abstract
      * The TeamSpeak3_Node_Channelgroup constructor.
      *
      * @param  TeamSpeak3_Node_Server $server
-     * @param  array  $info
-     * @param  string $index
+     * @param  array                  $info
+     * @param  string                 $index
      * @throws TeamSpeak3_Adapter_ServerQuery_Exception
      * @return TeamSpeak3_Node_Channelgroup
      */
     public function __construct(TeamSpeak3_Node_Server $server, array $info, $index = 'cgid')
     {
-        $this->parent = $server;
+        $this->parent   = $server;
         $this->nodeInfo = $info;
 
         if (!array_key_exists($index, $this->nodeInfo)) {
@@ -78,9 +73,9 @@ class TeamSpeak3_Node_Channelgroup extends TeamSpeak3_Node_Abstract
     /**
      * Creates a copy of the channel group and returns the new groups ID.
      *
-     * @param  string  $name
-     * @param  int $tcgid
-     * @param  int $type
+     * @param  string $name
+     * @param  int    $tcgid
+     * @param  int    $type
      * @return int
      */
     public function copy($name = null, $tcgid = 0, $type = TeamSpeak3::GROUP_DBTYPE_REGULAR)
@@ -161,7 +156,7 @@ class TeamSpeak3_Node_Channelgroup extends TeamSpeak3_Node_Abstract
      * Alias for privilegeKeyCreate().
      *
      * @deprecated
-     * @param mixed $cid
+     * @param mixed      $cid
      * @param null|mixed $description
      * @param null|mixed $customset
      */
@@ -173,9 +168,9 @@ class TeamSpeak3_Node_Channelgroup extends TeamSpeak3_Node_Abstract
     /**
      * Creates a new privilege key (token) for the channel group and returns the key.
      *
-     * @param  int $cid
-     * @param  string  $description
-     * @param  string  $customset
+     * @param  int    $cid
+     * @param  string $description
+     * @param  string $customset
      * @return TeamSpeak3_Helper_String
      */
     public function privilegeKeyCreate($cid, $description = null, $customset = null)

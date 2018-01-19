@@ -3,22 +3,17 @@
 /**
  * @file
  * TeamSpeak 3 PHP Framework
- *
  * $Id: Client.php 06/06/2016 22:27:13 scp@Svens-iMac $
- *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
  * @package   TeamSpeak3
  * @version   1.1.24
  * @author    Sven 'ScP' Paulsen
@@ -35,14 +30,14 @@ class TeamSpeak3_Node_Client extends TeamSpeak3_Node_Abstract
      * The TeamSpeak3_Node_Client constructor.
      *
      * @param  TeamSpeak3_Node_Server $server
-     * @param  array  $info
-     * @param  string $index
+     * @param  array                  $info
+     * @param  string                 $index
      * @throws TeamSpeak3_Adapter_ServerQuery_Exception
      * @return TeamSpeak3_Node_Client
      */
     public function __construct(TeamSpeak3_Node_Server $server, array $info, $index = 'clid')
     {
-        $this->parent = $server;
+        $this->parent   = $server;
         $this->nodeInfo = $info;
 
         if (!array_key_exists($index, $this->nodeInfo)) {
@@ -111,8 +106,8 @@ class TeamSpeak3_Node_Client extends TeamSpeak3_Node_Abstract
     /**
      * Moves the client to another channel.
      *
-     * @param  int $cid
-     * @param  string  $cpw
+     * @param  int    $cid
+     * @param  string $cpw
      * @return void
      */
     public function move($cid, $cpw = null)
@@ -123,8 +118,8 @@ class TeamSpeak3_Node_Client extends TeamSpeak3_Node_Abstract
     /**
      * Kicks the client from his currently joined channel or from the server.
      *
-     * @param  int $reasonid
-     * @param  string  $reasonmsg
+     * @param  int    $reasonid
+     * @param  string $reasonmsg
      * @return void
      */
     public function kick($reasonid = TeamSpeak3::KICK_CHANNEL, $reasonmsg = null)
@@ -147,8 +142,8 @@ class TeamSpeak3_Node_Client extends TeamSpeak3_Node_Abstract
      * Bans the client from the server. Please note that this will create two separate
      * ban rules for the targeted clients IP address and his unique identifier.
      *
-     * @param  int $timeseconds
-     * @param  string  $reason
+     * @param  int    $timeseconds
+     * @param  string $reason
      * @return array
      */
     public function ban($timeseconds = null, $reason = null)
@@ -394,17 +389,17 @@ class TeamSpeak3_Node_Client extends TeamSpeak3_Node_Abstract
     {
         if ($this['client_type']) {
             return 'client_query';
-        } elseif ($this['client_away']) {
+        } else if ($this['client_away']) {
             return 'client_away';
-        } elseif (!$this['client_output_hardware']) {
+        } else if (!$this['client_output_hardware']) {
             return 'client_snd_disabled';
-        } elseif ($this['client_output_muted']) {
+        } else if ($this['client_output_muted']) {
             return 'client_snd_muted';
-        } elseif (!$this['client_input_hardware']) {
+        } else if (!$this['client_input_hardware']) {
             return 'client_mic_disabled';
-        } elseif ($this['client_input_muted']) {
+        } else if ($this['client_input_muted']) {
             return 'client_mic_muted';
-        } elseif ($this['client_is_channel_commander']) {
+        } else if ($this['client_is_channel_commander']) {
             return $this['client_flag_talking'] ? 'client_cc_talk' : 'client_cc_idle';
         } else {
             return $this['client_flag_talking'] ? 'client_talk' : 'client_idle';

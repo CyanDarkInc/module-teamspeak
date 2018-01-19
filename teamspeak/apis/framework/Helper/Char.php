@@ -3,22 +3,17 @@
 /**
  * @file
  * TeamSpeak 3 PHP Framework
- *
  * $Id: Char.php 06/06/2016 22:27:13 scp@Svens-iMac $
- *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
  * @package   TeamSpeak3
  * @version   1.1.24
  * @author    Sven 'ScP' Paulsen
@@ -42,7 +37,7 @@ class TeamSpeak3_Helper_Char
      * The TeamSpeak3_Helper_Char constructor.
      *
      * @param  string $var
-     * @param mixed $char
+     * @param mixed   $char
      * @throws TeamSpeak3_Helper_Exception
      * @return TeamSpeak3_Helper_Char
      */
@@ -186,13 +181,13 @@ class TeamSpeak3_Helper_Char
 
         if ($h <= 0x7F) {
             return $h;
-        } elseif ($h < 0xC2) {
+        } else if ($h < 0xC2) {
             return false;
-        } elseif ($h <= 0xDF) {
+        } else if ($h <= 0xDF) {
             return ($h & 0x1F) << 6 | (ord($this->char[1]) & 0x3F);
-        } elseif ($h <= 0xEF) {
+        } else if ($h <= 0xEF) {
             return ($h & 0x0F) << 12 | (ord($this->char[1]) & 0x3F) << 6 | (ord($this->char[2]) & 0x3F);
-        } elseif ($h <= 0xF4) {
+        } else if ($h <= 0xF4) {
             return ($h & 0x0F) << 18 | (ord($this->char[1]) & 0x3F) << 12 | (ord($this->char[2]) & 0x3F) << 6 | (ord($this->char[3]) & 0x3F);
         } else {
             return false;

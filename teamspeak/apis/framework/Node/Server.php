@@ -3,22 +3,17 @@
 /**
  * @file
  * TeamSpeak 3 PHP Framework
- *
  * $Id: Server.php 06/06/2016 22:27:13 scp@Svens-iMac $
- *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
  * @package   TeamSpeak3
  * @version   1.1.24
  * @author    Sven 'ScP' Paulsen
@@ -55,8 +50,8 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
      * The TeamSpeak3_Node_Server constructor.
      *
      * @param  TeamSpeak3_Node_Host $host
-     * @param  array  $info
-     * @param  string $index
+     * @param  array                $info
+     * @param  string               $index
      * @throws TeamSpeak3_Adapter_ServerQuery_Exception
      * @return TeamSpeak3_Node_Server
      */
@@ -75,8 +70,8 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
     /**
      * Sends a prepared command to the server and returns the result.
      *
-     * @param  string  $cmd
-     * @param  bool $throw
+     * @param  string $cmd
+     * @param  bool   $throw
      * @return TeamSpeak3_Adapter_ServerQuery_Reply
      */
     public function request($cmd, $throw = true)
@@ -143,7 +138,7 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
     /**
      * Deletes the channel specified by $cid.
      *
-     * @param  int $cid
+     * @param  int  $cid
      * @param  bool $force
      * @return void
      */
@@ -186,75 +181,65 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
      * Creates a new channel spacer and returns the new ID. The first parameter $ident is used to create a
      * unique spacer name on the virtual server.
      *
-     * @param  string  $ident
-     * @param  mixed   $type
-     * @param  int $align
-     * @param  int $order
-     * @param  int $maxclients
+     * @param  string $ident
+     * @param  mixed  $type
+     * @param  int    $align
+     * @param  int    $order
+     * @param  int    $maxclients
      * @throws TeamSpeak3_Adapter_ServerQuery_Exception
      * @return int
      */
     public function channelSpacerCreate($ident, $type = TeamSpeak3::SPACER_SOLIDLINE, $align = TeamSpeak3::SPACER_ALIGN_REPEAT, $order = null, $maxclients = 0)
     {
-        $properties = [
-      'channel_name_phonetic' => 'channel spacer',
-      'channel_codec' => TeamSpeak3::CODEC_OPUS_VOICE,
-      'channel_codec_quality' => 0x00,
-      'channel_flag_permanent' => true,
-      'channel_flag_maxclients_unlimited' => false,
-      'channel_flag_maxfamilyclients_unlimited' => false,
-      'channel_flag_maxfamilyclients_inherited' => false,
-      'channel_maxclients' => $maxclients,
-      'channel_order' => $order,
-    ];
+        $properties = ['channel_name_phonetic' => 'channel spacer', 'channel_codec' => TeamSpeak3::CODEC_OPUS_VOICE, 'channel_codec_quality' => 0x00, 'channel_flag_permanent' => true, 'channel_flag_maxclients_unlimited' => false, 'channel_flag_maxfamilyclients_unlimited' => false, 'channel_flag_maxfamilyclients_inherited' => false, 'channel_maxclients' => $maxclients, 'channel_order' => $order,];
 
         switch ($align) {
-      case TeamSpeak3::SPACER_ALIGN_REPEAT:
-        $properties['channel_name'] = '[*spacer' . (string) $ident . ']';
-        break;
+            case TeamSpeak3::SPACER_ALIGN_REPEAT:
+                $properties['channel_name'] = '[*spacer' . (string) $ident . ']';
+                break;
 
-      case TeamSpeak3::SPACER_ALIGN_LEFT:
-        $properties['channel_name'] = '[lspacer' . (string) $ident . ']';
-        break;
+            case TeamSpeak3::SPACER_ALIGN_LEFT:
+                $properties['channel_name'] = '[lspacer' . (string) $ident . ']';
+                break;
 
-      case TeamSpeak3::SPACER_ALIGN_RIGHT:
-        $properties['channel_name'] = '[rspacer' . (string) $ident . ']';
-        break;
+            case TeamSpeak3::SPACER_ALIGN_RIGHT:
+                $properties['channel_name'] = '[rspacer' . (string) $ident . ']';
+                break;
 
-      case TeamSpeak3::SPACER_ALIGN_CENTER:
-        $properties['channel_name'] = '[cspacer' . (string) $ident . ']';
-        break;
+            case TeamSpeak3::SPACER_ALIGN_CENTER:
+                $properties['channel_name'] = '[cspacer' . (string) $ident . ']';
+                break;
 
-      default:
-        throw new TeamSpeak3_Adapter_ServerQuery_Exception('missing required parameter', 0x606);
-        break;
-    }
+            default:
+                throw new TeamSpeak3_Adapter_ServerQuery_Exception('missing required parameter', 0x606);
+                break;
+        }
 
         switch ($type) {
-      case (string) TeamSpeak3::SPACER_SOLIDLINE:
-        $properties['channel_name'] .= '___';
-        break;
+            case (string) TeamSpeak3::SPACER_SOLIDLINE:
+                $properties['channel_name'] .= '___';
+                break;
 
-      case (string) TeamSpeak3::SPACER_DASHLINE:
-        $properties['channel_name'] .= '---';
-        break;
+            case (string) TeamSpeak3::SPACER_DASHLINE:
+                $properties['channel_name'] .= '---';
+                break;
 
-      case (string) TeamSpeak3::SPACER_DOTLINE:
-        $properties['channel_name'] .= '...';
-        break;
+            case (string) TeamSpeak3::SPACER_DOTLINE:
+                $properties['channel_name'] .= '...';
+                break;
 
-      case (string) TeamSpeak3::SPACER_DASHDOTLINE:
-        $properties['channel_name'] .= '-.-';
-        break;
+            case (string) TeamSpeak3::SPACER_DASHDOTLINE:
+                $properties['channel_name'] .= '-.-';
+                break;
 
-      case (string) TeamSpeak3::SPACER_DASHDOTDOTLINE:
-        $properties['channel_name'] .= '-..';
-        break;
+            case (string) TeamSpeak3::SPACER_DASHDOTDOTLINE:
+                $properties['channel_name'] .= '-..';
+                break;
 
-      default:
-        $properties['channel_name'] .= (string) $type;
-        break;
-    }
+            default:
+                $properties['channel_name'] .= (string) $type;
+                break;
+        }
 
         return $this->channelCreate($properties);
     }
@@ -275,24 +260,24 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
         }
 
         switch ($channel['channel_name']->section(']', 1)) {
-      case '___':
-        return TeamSpeak3::SPACER_SOLIDLINE;
+            case '___':
+                return TeamSpeak3::SPACER_SOLIDLINE;
 
-      case '---':
-        return TeamSpeak3::SPACER_DASHLINE;
+            case '---':
+                return TeamSpeak3::SPACER_DASHLINE;
 
-      case '...':
-        return TeamSpeak3::SPACER_DOTLINE;
+            case '...':
+                return TeamSpeak3::SPACER_DOTLINE;
 
-      case '-.-':
-        return TeamSpeak3::SPACER_DASHDOTLINE;
+            case '-.-':
+                return TeamSpeak3::SPACER_DASHDOTLINE;
 
-      case '-..':
-        return TeamSpeak3::SPACER_DASHDOTDOTLINE;
+            case '-..':
+                return TeamSpeak3::SPACER_DASHDOTDOTLINE;
 
-      default:
-        return TeamSpeak3::SPACER_CUSTOM;
-    }
+            default:
+                return TeamSpeak3::SPACER_CUSTOM;
+        }
     }
 
     /**
@@ -311,24 +296,24 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
         }
 
         switch ($matches[1]) {
-      case '*':
-        return TeamSpeak3::SPACER_ALIGN_REPEAT;
+            case '*':
+                return TeamSpeak3::SPACER_ALIGN_REPEAT;
 
-      case 'c':
-        return TeamSpeak3::SPACER_ALIGN_CENTER;
+            case 'c':
+                return TeamSpeak3::SPACER_ALIGN_CENTER;
 
-      case 'r':
-        return TeamSpeak3::SPACER_ALIGN_RIGHT;
+            case 'r':
+                return TeamSpeak3::SPACER_ALIGN_RIGHT;
 
-      default:
-        return TeamSpeak3::SPACER_ALIGN_LEFT;
-    }
+            default:
+                return TeamSpeak3::SPACER_ALIGN_LEFT;
+        }
     }
 
     /**
      * Returns a list of permissions defined for a specific channel.
      *
-     * @param  int $cid
+     * @param  int  $cid
      * @param  bool $permsid
      * @return array
      */
@@ -378,8 +363,8 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
     /**
      * Returns a list of permissions defined for a client in a specific channel.
      *
-     * @param  int $cid
-     * @param  int $cldbid
+     * @param  int  $cid
+     * @param  int  $cldbid
      * @param  bool $permsid
      * @return array
      */
@@ -410,7 +395,8 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
     }
 
     /**
-     * Removes a set of specified permissions from a client in a specific channel. Multiple permissions can be removed at once.
+     * Removes a set of specified permissions from a client in a specific channel. Multiple permissions can be removed
+     * at once.
      *
      * @param  int $cid
      * @param  int $cldbid
@@ -431,10 +417,10 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
     /**
      * Returns a list of files and directories stored in the specified channels file repository.
      *
-     * @param  int $cid
-     * @param  string  $cpw
-     * @param  string  $path
-     * @param  bool $recursive
+     * @param  int    $cid
+     * @param  string $cpw
+     * @param  string $path
+     * @param  bool   $recursive
      * @return array
      */
     public function channelFileList($cid, $cpw = '', $path = '/', $recursive = false)
@@ -467,9 +453,9 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
     /**
      * Returns detailed information about the specified file stored in a channels file repository.
      *
-     * @param  int $cid
-     * @param  string  $cpw
-     * @param  string  $name
+     * @param  int    $cid
+     * @param  string $cpw
+     * @param  string $name
      * @return array
      */
     public function channelFileInfo($cid, $cpw = '', $name = '/')
@@ -483,12 +469,12 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
      * Renames a file in a channels file repository. If the two parameters $tcid and $tcpw are specified, the file
      * will be moved into another channels file repository.
      *
-     * @param  int $cid
-     * @param  string  $cpw
-     * @param  string  $oldname
-     * @param  string  $newname
-     * @param  int $tcid
-     * @param  string  $tcpw
+     * @param  int    $cid
+     * @param  string $cpw
+     * @param  string $oldname
+     * @param  string $newname
+     * @param  int    $tcid
+     * @param  string $tcpw
      * @return void
      */
     public function channelFileRename($cid, $cpw = '', $oldname = '/', $newname = '/', $tcid = null, $tcpw = null)
@@ -499,9 +485,9 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
     /**
      * Deletes one or more files stored in a channels file repository.
      *
-     * @param  int $cid
-     * @param  string  $cpw
-     * @param  string  $name
+     * @param  int    $cid
+     * @param  string $cpw
+     * @param  string $name
      * @return void
      */
     public function channelFileDelete($cid, $cpw = '', $name = '/')
@@ -512,9 +498,9 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
     /**
      * Creates new directory in a channels file repository.
      *
-     * @param  int $cid
-     * @param  string  $cpw
-     * @param  string  $dirname
+     * @param  int    $cid
+     * @param  string $cpw
+     * @param  string $dirname
      * @return void
      */
     public function channelDirCreate($cid, $cpw = '', $dirname = '/')
@@ -681,8 +667,8 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
      * Returns a list of client database IDs matching a given pattern. You can either search for a clients
      * last known nickname or his unique identity by using the $uid option.
      *
-     * @param  string  $pattern
-     * @param  bool $uid
+     * @param  string $pattern
+     * @param  bool   $uid
      * @return array
      */
     public function clientFindDb($pattern, $uid = false)
@@ -825,9 +811,9 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
     /**
      * Moves a client to another channel.
      *
-     * @param  int $clid
-     * @param  int $cid
-     * @param  string  $cpw
+     * @param  int    $clid
+     * @param  int    $cid
+     * @param  string $cpw
      * @return void
      */
     public function clientMove($clid, $cid, $cpw = null)
@@ -852,9 +838,9 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
     /**
      * Kicks one or more clients from their currently joined channel or from the server.
      *
-     * @param  int $clid
-     * @param  int $reasonid
-     * @param  string  $reasonmsg
+     * @param  int    $clid
+     * @param  int    $reasonid
+     * @param  string $reasonmsg
      * @return void
      */
     public function clientKick($clid, $reasonid = TeamSpeak3::KICK_CHANNEL, $reasonmsg = null)
@@ -867,8 +853,8 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
     /**
      * Sends a poke message to a client.
      *
-     * @param  int $clid
-     * @param  string  $msg
+     * @param  int    $clid
+     * @param  string $msg
      * @return void
      */
     public function clientPoke($clid, $msg)
@@ -880,9 +866,9 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
      * Bans the client specified with ID $clid from the server. Please note that this will create two separate
      * ban rules for the targeted clients IP address and his unique identifier.
      *
-     * @param  int $clid
-     * @param  int $timeseconds
-     * @param  string  $reason
+     * @param  int    $clid
+     * @param  int    $timeseconds
+     * @param  string $reason
      * @return array
      */
     public function clientBan($clid, $timeseconds = null, $reason = null)
@@ -935,7 +921,7 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
     /**
      * Returns a list of permissions defined for a client.
      *
-     * @param  int $cldbid
+     * @param  int  $cldbid
      * @param  bool $permsid
      * @return array
      */
@@ -1019,8 +1005,8 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
     /**
      * Creates a new server group using the name specified with $name and returns its ID.
      *
-     * @param  string  $name
-     * @param  int $type
+     * @param  string $name
+     * @param  int    $type
      * @return int
      */
     public function serverGroupCreate($name, $type = TeamSpeak3::GROUP_DBTYPE_REGULAR)
@@ -1035,10 +1021,10 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
     /**
      * Creates a copy of an existing server group specified by $ssgid and returns the new groups ID.
      *
-     * @param  int $ssgid
-     * @param  string  $name
-     * @param  int $tsgid
-     * @param  int $type
+     * @param  int    $ssgid
+     * @param  string $name
+     * @param  int    $tsgid
+     * @param  int    $type
      * @return int
      */
     public function serverGroupCopy($ssgid, $name = null, $tsgid = 0, $type = TeamSpeak3::GROUP_DBTYPE_REGULAR)
@@ -1057,7 +1043,7 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
     /**
      * Renames the server group specified with $sgid.
      *
-     * @param  int $sgid
+     * @param  int    $sgid
      * @param  string $name
      * @return void
      */
@@ -1072,7 +1058,7 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
      * Deletes the server group specified with $sgid. If $force is set to 1, the server group
      * will be deleted even if there are clients within.
      *
-     * @param  int $sgid
+     * @param  int  $sgid
      * @param  bool $force
      * @return void
      */
@@ -1102,8 +1088,8 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
     /**
      * Returns the TeamSpeak3_Node_Servergroup object matching the given name.
      *
-     * @param  string  $name
-     * @param  int $type
+     * @param  string $name
+     * @param  int    $type
      * @throws TeamSpeak3_Adapter_ServerQuery_Exception
      * @return TeamSpeak3_Node_Servergroup
      */
@@ -1121,7 +1107,7 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
     /**
      * Returns a list of permissions assigned to the server group specified.
      *
-     * @param  int $sgid
+     * @param  int  $sgid
      * @param  bool $permsid
      * @return array
      */
@@ -1183,7 +1169,7 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
             return [];
         }
 
-        return $this->execute('servergroupclientlist', ['sgid' => $sgid,  '-names'])->toAssocArray('cldbid');
+        return $this->execute('servergroupclientlist', ['sgid' => $sgid, '-names'])->toAssocArray('cldbid');
     }
 
     /**
@@ -1228,32 +1214,7 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
                 continue;
             }
 
-            $profiles[$sgid] = [
-        'b_permission_modify_power_ignore' => 0,
-        'i_group_needed_member_add_power' => 0,
-        'i_group_member_add_power' => 0,
-        'i_group_needed_member_remove_power' => 0,
-        'i_group_member_remove_power' => 0,
-        'i_needed_modify_power_count' => 0,
-        'i_needed_modify_power_total' => 0,
-        'i_permission_modify_power' => 0,
-        'i_group_needed_modify_power' => 0,
-        'i_group_modify_power' => 0,
-        'i_client_needed_modify_power' => 0,
-        'i_client_modify_power' => 0,
-        'b_virtualserver_servergroup_create' => 0,
-        'b_virtualserver_servergroup_delete' => 0,
-        'b_client_ignore_bans' => 0,
-        'b_client_ignore_antiflood' => 0,
-        'b_group_is_permanent' => 0,
-        'i_client_needed_ban_power' => 0,
-        'i_client_needed_kick_power' => 0,
-        'i_client_needed_move_power' => 0,
-        'i_client_talk_power' => 0,
-        '__sgid' => $sgid,
-        '__name' => $sgroup->toString(),
-        '__node' => $sgroup,
-      ];
+            $profiles[$sgid] = ['b_permission_modify_power_ignore' => 0, 'i_group_needed_member_add_power' => 0, 'i_group_member_add_power' => 0, 'i_group_needed_member_remove_power' => 0, 'i_group_member_remove_power' => 0, 'i_needed_modify_power_count' => 0, 'i_needed_modify_power_total' => 0, 'i_permission_modify_power' => 0, 'i_group_needed_modify_power' => 0, 'i_group_modify_power' => 0, 'i_client_needed_modify_power' => 0, 'i_client_modify_power' => 0, 'b_virtualserver_servergroup_create' => 0, 'b_virtualserver_servergroup_delete' => 0, 'b_client_ignore_bans' => 0, 'b_client_ignore_antiflood' => 0, 'b_group_is_permanent' => 0, 'i_client_needed_ban_power' => 0, 'i_client_needed_kick_power' => 0, 'i_client_needed_move_power' => 0, 'i_client_talk_power' => 0, '__sgid' => $sgid, '__name' => $sgroup->toString(), '__node' => $sgroup,];
 
             try {
                 $perms = $this->serverGroupPermList($sgid, true);
@@ -1270,7 +1231,7 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
             foreach ($perms as $permsid => $perm) {
                 if (in_array($permsid, array_keys($profiles[$sgid]))) {
                     $profiles[$sgid][$permsid] = $perm['permvalue'];
-                } elseif (TeamSpeak3_Helper_String::factory($permsid)->startsWith('i_needed_modify_power_')) {
+                } else if (TeamSpeak3_Helper_String::factory($permsid)->startsWith('i_needed_modify_power_')) {
                     if (!$grant || $perm['permvalue'] > $grant) {
                         continue;
                     }
@@ -1336,8 +1297,8 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
     /**
      * Creates a new channel group using the name specified with $name and returns its ID.
      *
-     * @param  string  $name
-     * @param  int $type
+     * @param  string $name
+     * @param  int    $type
      * @return int
      */
     public function channelGroupCreate($name, $type = TeamSpeak3::GROUP_DBTYPE_REGULAR)
@@ -1352,10 +1313,10 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
     /**
      * Creates a copy of an existing channel group specified by $scgid and returns the new groups ID.
      *
-     * @param  int $scgid
-     * @param  string  $name
-     * @param  int $tcgid
-     * @param  int $type
+     * @param  int    $scgid
+     * @param  string $name
+     * @param  int    $tcgid
+     * @param  int    $type
      * @return int
      */
     public function channelGroupCopy($scgid, $name = null, $tcgid = 0, $type = TeamSpeak3::GROUP_DBTYPE_REGULAR)
@@ -1374,8 +1335,8 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
     /**
      * Renames the channel group specified with $cgid.
      *
-     * @param  int $cgid
-     * @param  string  $name
+     * @param  int    $cgid
+     * @param  string $name
      * @return void
      */
     public function channelGroupRename($cgid, $name)
@@ -1389,7 +1350,7 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
      * Deletes the channel group specified with $cgid. If $force is set to 1, the channel group
      * will be deleted even if there are clients within.
      *
-     * @param  int $sgid
+     * @param  int  $sgid
      * @param  bool $force
      * @param mixed $cgid
      * @return void
@@ -1420,8 +1381,8 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
     /**
      * Returns the TeamSpeak3_Node_Channelgroup object matching the given name.
      *
-     * @param  string  $name
-     * @param  int $type
+     * @param  string $name
+     * @param  int    $type
      * @throws TeamSpeak3_Adapter_ServerQuery_Exception
      * @return TeamSpeak3_Node_Channelgroup
      */
@@ -1439,7 +1400,7 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
     /**
      * Returns a list of permissions assigned to the channel group specified.
      *
-     * @param  int $cgid
+     * @param  int  $cgid
      * @param  bool $permsid
      * @return array
      */
@@ -1534,29 +1495,29 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
 
         foreach ($assignments as $assignment) {
             switch ($assignment['t']) {
-          case TeamSpeak3::PERM_TYPE_SERVERGROUP:
-              $this->serverGroupPermRemove($assignment['id1'], $assignment['p']);
-              break;
+                case TeamSpeak3::PERM_TYPE_SERVERGROUP:
+                    $this->serverGroupPermRemove($assignment['id1'], $assignment['p']);
+                    break;
 
-        case TeamSpeak3::PERM_TYPE_CLIENT:
-          $this->clientPermRemove($assignment['id2'], $assignment['p']);
-          break;
+                case TeamSpeak3::PERM_TYPE_CLIENT:
+                    $this->clientPermRemove($assignment['id2'], $assignment['p']);
+                    break;
 
-        case TeamSpeak3::PERM_TYPE_CHANNEL:
-          $this->channelPermRemove($assignment['id2'], $assignment['p']);
-          break;
+                case TeamSpeak3::PERM_TYPE_CHANNEL:
+                    $this->channelPermRemove($assignment['id2'], $assignment['p']);
+                    break;
 
-        case TeamSpeak3::PERM_TYPE_CHANNELGROUP:
-          $this->channelGroupPermRemove($assignment['id1'], $assignment['p']);
-          break;
+                case TeamSpeak3::PERM_TYPE_CHANNELGROUP:
+                    $this->channelGroupPermRemove($assignment['id1'], $assignment['p']);
+                    break;
 
-        case TeamSpeak3::PERM_TYPE_CHANNELCLIENT:
-          $this->channelClientPermRemove($assignment['id2'], $assignment['id1'], $assignment['p']);
-          break;
+                case TeamSpeak3::PERM_TYPE_CHANNELCLIENT:
+                    $this->channelClientPermRemove($assignment['id2'], $assignment['id1'], $assignment['p']);
+                    break;
 
-          default:
-            throw new TeamSpeak3_Adapter_ServerQuery_Exception('convert error', 0x604);
-      }
+                default:
+                    throw new TeamSpeak3_Adapter_ServerQuery_Exception('convert error', 0x604);
+            }
         }
 
         return count($assignments);
@@ -1565,13 +1526,13 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
     /**
      * Initializes a file transfer upload. $clientftfid is an arbitrary ID to identify the file transfer on client-side.
      *
-     * @param  int $clientftfid
-     * @param  int $cid
-     * @param  string  $name
-     * @param  int $size
-     * @param  string  $cpw
-     * @param  bool $overwrite
-     * @param  bool $resume
+     * @param  int    $clientftfid
+     * @param  int    $cid
+     * @param  string $name
+     * @param  int    $size
+     * @param  string $cpw
+     * @param  bool   $overwrite
+     * @param  bool   $resume
      * @throws TeamSpeak3_Adapter_ServerQuery_Exception
      * @return array
      */
@@ -1600,13 +1561,14 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
     }
 
     /**
-     * Initializes a file transfer download. $clientftfid is an arbitrary ID to identify the file transfer on client-side.
+     * Initializes a file transfer download. $clientftfid is an arbitrary ID to identify the file transfer on
+     * client-side.
      *
-     * @param  int $clientftfid
-     * @param  int $cid
-     * @param  string  $name
-     * @param  string  $cpw
-     * @param  int $seekpos
+     * @param  int    $clientftfid
+     * @param  int    $cid
+     * @param  string $name
+     * @param  string $cpw
+     * @param  int    $seekpos
      * @throws TeamSpeak3_Adapter_ServerQuery_Exception
      * @return array
      */
@@ -1648,7 +1610,7 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
     /**
      * Stops the running file transfer with server-side ID $serverftfid.
      *
-     * @param  int $serverftfid
+     * @param  int  $serverftfid
      * @param  bool $delete
      * @return void
      */
@@ -1682,7 +1644,7 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
      */
     public function iconUpload($data)
     {
-        $crc   = crc32($data);
+        $crc  = crc32($data);
         $size = strlen($data);
 
         $upload   = $this->transferInitUpload(rand(0x0000, 0xFFFF), 0, '/icon_' . $crc, $size);
@@ -1754,7 +1716,7 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
     /**
      * Returns an existing offline message with ID $msgid from your inbox.
      *
-     * @param  int $msgid
+     * @param  int  $msgid
      * @param  bool $flag_read
      * @return array
      */
@@ -1780,18 +1742,18 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
         $snapshot = $this->request('serversnapshotcreate')->toString(false);
 
         switch ($mode) {
-      case TeamSpeak3::SNAPSHOT_BASE64:
-        return $snapshot->toBase64();
-        break;
+            case TeamSpeak3::SNAPSHOT_BASE64:
+                return $snapshot->toBase64();
+                break;
 
-      case TeamSpeak3::SNAPSHOT_HEXDEC:
-        return $snapshot->toHex();
-        break;
+            case TeamSpeak3::SNAPSHOT_HEXDEC:
+                return $snapshot->toHex();
+                break;
 
-      default:
-        return (string) $snapshot;
-        break;
-    }
+            default:
+                return (string) $snapshot;
+                break;
+        }
     }
 
     /**
@@ -1805,18 +1767,18 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
     public function snapshotDeploy($data, $mode = TeamSpeak3::SNAPSHOT_STRING)
     {
         switch ($mode) {
-      case TeamSpeak3::SNAPSHOT_BASE64:
-        $data = TeamSpeak3_Helper_String::fromBase64($data);
-        break;
+            case TeamSpeak3::SNAPSHOT_BASE64:
+                $data = TeamSpeak3_Helper_String::fromBase64($data);
+                break;
 
-      case TeamSpeak3::SNAPSHOT_HEXDEC:
-        $data = TeamSpeak3_Helper_String::fromHex($data);
-        break;
+            case TeamSpeak3::SNAPSHOT_HEXDEC:
+                $data = TeamSpeak3_Helper_String::fromHex($data);
+                break;
 
-      default:
-        $data = TeamSpeak3_Helper_String::factory($data);
-        break;
-    }
+            default:
+                $data = TeamSpeak3_Helper_String::factory($data);
+                break;
+        }
 
         $detail = $this->request('serversnapshotdeploy ' . $data)->toList();
 
@@ -1832,8 +1794,8 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
      * messages. Depending on the notifications you've registered for, the server will send you
      * a message on every event.
      *
-     * @param  string  $event
-     * @param  int $id
+     * @param  string $event
+     * @param  int    $id
      * @return void
      */
     public function notifyRegister($event, $id = 0)
@@ -1908,9 +1870,9 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
      * Alias for privilegeKeyCreate().
      *
      * @deprecated
-     * @param mixed $type
-     * @param mixed $id1
-     * @param mixed $id2
+     * @param mixed      $type
+     * @param mixed      $id1
+     * @param mixed      $id2
      * @param null|mixed $description
      * @param null|mixed $customset
      */
@@ -1922,11 +1884,11 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
     /**
      * Creates a new privilege key (token) and returns the key.
      *
-     * @param  int $type
-     * @param  int $id1
-     * @param  int $id2
-     * @param  string  $description
-     * @param  string  $customset
+     * @param  int    $type
+     * @param  int    $id1
+     * @param  int    $id2
+     * @param  string $description
+     * @param  string $customset
      * @return TeamSpeak3_Helper_String
      */
     public function privilegeKeyCreate($type, $id1, $id2 = 0, $description = null, $customset = null)
@@ -2030,14 +1992,14 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
      * Adds a new ban rule on the selected virtual server. All parameters are optional but at least one
      * of the following rules must be set: ip, name, or uid.
      *
-     * @param  array   $rules
-     * @param  int $timeseconds
-     * @param  string  $reason
+     * @param  array  $rules
+     * @param  int    $timeseconds
+     * @param  string $reason
      * @return int
      */
     public function banCreate(array $rules, $timeseconds = null, $reason = null)
     {
-        $rules['time'] = $timeseconds;
+        $rules['time']      = $timeseconds;
         $rules['banreason'] = $reason;
 
         $banid = $this->execute('banadd', $rules)->toList();
@@ -2082,8 +2044,8 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
     /**
      * Submits a complaint about the client with database ID $tcldbid to the server.
      *
-     * @param  int $tcldbid
-     * @param  string  $message
+     * @param  int    $tcldbid
+     * @param  string $message
      * @return void
      */
     public function complaintCreate($tcldbid, $message)
@@ -2138,11 +2100,11 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
      * password will automatically join the channel specified with $tcid. If tcid is set to 0,
      * the client will join the default channel.
      *
-     * @param  string  $pw
-     * @param  int $duration
-     * @param  int $tcid
-     * @param  string  $tcpw
-     * @param  string  $desc
+     * @param  string $pw
+     * @param  int    $duration
+     * @param  int    $tcid
+     * @param  string $tcpw
+     * @param  string $desc
      * @return void
      */
     public function tempPasswordCreate($pw, $duration, $tcid = 0, $tcpw = '', $desc = '')
@@ -2164,8 +2126,8 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
     /**
      * Displays a specified number of entries (1-100) from the servers log.
      *
-     * @param  int $lines
-     * @param  int $begin_pos
+     * @param  int  $lines
+     * @param  int  $begin_pos
      * @param  bool $reverse
      * @param  bool $instance
      * @return array
@@ -2178,8 +2140,8 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
     /**
      * Writes a custom entry into the virtual server log.
      *
-     * @param  string  $logmsg
-     * @param  int $loglevel
+     * @param  string $logmsg
+     * @param  int    $loglevel
      * @return void
      */
     public function logAdd($logmsg, $loglevel = TeamSpeak3::LOGLEVEL_INFO)
@@ -2425,7 +2387,7 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
     {
         if ($this['virtualserver_clientsonline'] - $this['virtualserver_queryclientsonline'] >= $this['virtualserver_maxclients']) {
             return 'server_full';
-        } elseif ($this['virtualserver_flag_password']) {
+        } else if ($this['virtualserver_flag_password']) {
             return 'server_pass';
         } else {
             return 'server_open';
