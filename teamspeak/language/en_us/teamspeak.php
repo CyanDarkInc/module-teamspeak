@@ -1,6 +1,6 @@
 <?php
 /**
- * en_us language for the teamspeak module
+ * en_us language for the teamspeak module.
  */
 // Basics
 $lang['Teamspeak.name'] = 'TeamSpeak';
@@ -18,7 +18,6 @@ $lang['Teamspeak.tab_client_clients'] = 'Clients';
 $lang['Teamspeak.tab_client_bans'] = 'Bans';
 $lang['Teamspeak.tab_client_tokens'] = 'Tokens';
 $lang['Teamspeak.tab_client_logs'] = 'Logs';
-
 
 // Module management
 $lang['Teamspeak.add_module_row'] = 'Add Server';
@@ -45,7 +44,6 @@ $lang['Teamspeak.manage.module_groups_no_results'] = 'There are no server groups
 $lang['Teamspeak.order_options.first'] = 'First Non-full Server';
 $lang['Teamspeak.order_options.roundrobin'] = 'Evenly Distribute Among Servers';
 
-
 // Add row
 $lang['Teamspeak.add_row.box_title'] = 'Add TeamSpeak Server';
 $lang['Teamspeak.add_row.basic_title'] = 'Basic Settings';
@@ -64,16 +62,13 @@ $lang['Teamspeak.row_meta.password'] = 'Password';
 $lang['Teamspeak.row_meta.port'] = 'Port';
 $lang['Teamspeak.row_meta.account_limit'] = 'Account Limit';
 
-
 // Package fields
 $lang['Teamspeak.package_fields.maxclients'] = 'Maximum Clients';
-
 
 // Service fields
 $lang['Teamspeak.service_field.name'] = 'Server Name';
 $lang['Teamspeak.service_field.port'] = 'Port';
 $lang['Teamspeak.service_field.sid'] = 'Virtual Server ID';
-
 
 // Service management
 $lang['Teamspeak.tab_actions.status_title'] = 'Server Status';
@@ -89,7 +84,6 @@ $lang['Teamspeak.tab_actions.heading_change_name'] = 'Change Name';
 $lang['Teamspeak.tab_actions.field_name'] = 'Name';
 $lang['Teamspeak.tab_actions.field_name_submit'] = 'Change Name';
 
-
 // Server clients
 $lang['Teamspeak.tab_clients.heading_clients'] = 'Clients';
 $lang['Teamspeak.tab_clients.clients_heading.client_id'] = 'Client ID';
@@ -97,7 +91,6 @@ $lang['Teamspeak.tab_clients.clients_heading.client_name'] = 'Client Name';
 $lang['Teamspeak.tab_clients.clients_heading.options'] = 'Options';
 $lang['Teamspeak.tab_clients.action_kick_client'] = 'Kick Client';
 $lang['Teamspeak.tab_clients.text_no_clients'] = 'There are no clients yet.';
-
 
 // Server bans
 $lang['Teamspeak.tab_bans.heading_bans'] = 'Bans';
@@ -115,7 +108,6 @@ $lang['Teamspeak.tab_bans.field_ip_address'] = 'IP Address';
 $lang['Teamspeak.tab_bans.field_reason'] = 'Reason';
 $lang['Teamspeak.tab_bans.field_ban_submit'] = 'Create Ban';
 
-
 // Server tokens
 $lang['Teamspeak.tab_tokens.heading_tokens'] = 'Tokens';
 $lang['Teamspeak.tab_tokens.tokens_heading.date'] = 'Creation Date';
@@ -131,7 +123,6 @@ $lang['Teamspeak.tab_tokens.field_sgid'] = 'Server Group';
 $lang['Teamspeak.tab_tokens.field_description'] = 'Description';
 $lang['Teamspeak.tab_tokens.field_token_submit'] = 'Create Token';
 
-
 // Server log
 $lang['Teamspeak.tab_logs.heading_log'] = 'Log';
 $lang['Teamspeak.tab_logs.log_heading.date'] = 'Date';
@@ -145,7 +136,6 @@ $lang['Teamspeak.tab_logs.type_WARNING'] = 'Warning';
 $lang['Teamspeak.tab_logs.type_INFO'] = 'Information';
 $lang['Teamspeak.tab_logs.type_DANGER'] = 'Danger';
 $lang['Teamspeak.tab_logs.type_SUCCESS'] = 'Success';
-
 
 // Client actions
 $lang['Teamspeak.tab_client_actions.heading_status'] = 'Server Status';
@@ -164,7 +154,6 @@ $lang['Teamspeak.tab_client_actions.heading_change_name'] = 'Change Name';
 $lang['Teamspeak.tab_client_actions.field_name'] = 'Name';
 $lang['Teamspeak.tab_client_actions.field_name_submit'] = 'Change Name';
 
-
 // Client server clients
 $lang['Teamspeak.tab_client_clients.heading_clients'] = 'Clients';
 $lang['Teamspeak.tab_client_clients.clients_heading.client_id'] = 'Client ID';
@@ -172,7 +161,6 @@ $lang['Teamspeak.tab_client_clients.clients_heading.client_name'] = 'Client Name
 $lang['Teamspeak.tab_client_clients.clients_heading.options'] = 'Options';
 $lang['Teamspeak.tab_client_clients.action_kick_client'] = 'Kick Client';
 $lang['Teamspeak.tab_client_clients.text_no_clients'] = 'There are no clients yet.';
-
 
 // Client server bans
 $lang['Teamspeak.tab_client_bans.heading_bans'] = 'Bans';
@@ -190,7 +178,6 @@ $lang['Teamspeak.tab_client_bans.field_ip_address'] = 'IP Address';
 $lang['Teamspeak.tab_client_bans.field_reason'] = 'Reason';
 $lang['Teamspeak.tab_client_bans.field_ban_submit'] = 'Create Ban';
 
-
 // Client server tokens
 $lang['Teamspeak.tab_client_tokens.heading_tokens'] = 'Tokens';
 $lang['Teamspeak.tab_client_tokens.tokens_heading.date'] = 'Creation Date';
@@ -206,7 +193,6 @@ $lang['Teamspeak.tab_client_tokens.field_sgid'] = 'Server Group';
 $lang['Teamspeak.tab_client_tokens.field_description'] = 'Description';
 $lang['Teamspeak.tab_client_tokens.field_token_submit'] = 'Create Token';
 
-
 // Client server log
 $lang['Teamspeak.tab_client_logs.heading_log'] = 'Log';
 $lang['Teamspeak.tab_client_logs.log_heading.date'] = 'Date';
@@ -221,18 +207,15 @@ $lang['Teamspeak.tab_client_logs.type_INFO'] = 'Information';
 $lang['Teamspeak.tab_client_logs.type_DANGER'] = 'Danger';
 $lang['Teamspeak.tab_client_logs.type_SUCCESS'] = 'Success';
 
-
 // Service info
 $lang['Teamspeak.service_info.hostname'] = 'Hostname';
 $lang['Teamspeak.service_info.port'] = 'Port';
 $lang['Teamspeak.service_info.token'] = 'Token';
 
-
 // Tooltips
 $lang['Teamspeak.package_fields.tooltip.maxclients'] = 'Specifies the maximum number of users of the virtual server.';
 $lang['Teamspeak.service_field.tooltip.port'] = 'Set a specific port for the account, leave blank for select a port automatically.';
-$lang['Teamspeak.service_field.tooltip.sid'] = "The Virtual Server ID specifies the server from TeamSpeak to which this service will be attached. Changing this value will only affect this service locally.";
-
+$lang['Teamspeak.service_field.tooltip.sid'] = 'The Virtual Server ID specifies the server from TeamSpeak to which this service will be attached. Changing this value will only affect this service locally.';
 
 // Errors
 $lang['Teamspeak.!error.server_name_valid'] = 'You must enter a Server Label.';

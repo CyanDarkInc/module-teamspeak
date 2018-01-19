@@ -14,8 +14,7 @@
             <?php
                 if (!empty($tokens->tokens)) {
                     foreach ($tokens->tokens as $token) {
-                        $date = date('M d, Y', $token->token_created);
-            ?>
+                        $date = date('M d, Y', $token->token_created); ?>
                 <tr>
                     <td><?php $this->Html->_($date); ?></td>
                     <td><?php $this->Html->_($token->token); ?></td>
@@ -23,21 +22,19 @@
                     <td>
                         <?php
                             $this->Form->create();
-                            $this->Form->fieldHidden('action', 'delete_token');
-                            $this->Form->fieldHidden('token', $token->token);
-                        ?>
+                        $this->Form->fieldHidden('action', 'delete_token');
+                        $this->Form->fieldHidden('token', $token->token); ?>
                             <button class="btn btn-default btn-sm btn-danger">
                                 <i class="fa fa-trash"></i> <?php $this->_('Teamspeak.tab_client_tokens.action_delete_token'); ?>
                             </button>
                         <?php
-                            $this->Form->end();
-                        ?>
+                            $this->Form->end(); ?>
                     </td>
                 </tr>
             <?php
                     }
                 } else {
-            ?>
+                    ?>
                 <tr>
                     <td colspan="4"><?php $this->_('Teamspeak.tab_client_tokens.text_no_tokens'); ?></td>
                 </tr>

@@ -9,7 +9,7 @@
             $this->Form->fieldHidden('account_count', $this->Html->ifSet($vars->account_count, 0));
             ?>
             <div class="title_row first">
-                <h3><?php $this->_('Teamspeak.add_row.basic_title');?></h3>
+                <h3><?php $this->_('Teamspeak.add_row.basic_title'); ?></h3>
             </div>
             <div class="pad">
                 <ul>
@@ -53,7 +53,7 @@
             </div>
 
             <div class="title_row">
-                <h3><?php $this->_('Teamspeak.add_row.notes_title');?></h3>
+                <h3><?php $this->_('Teamspeak.add_row.notes_title'); ?></h3>
             </div>
             <div class="pad">
                 <ul>

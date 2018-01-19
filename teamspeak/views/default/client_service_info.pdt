@@ -3,15 +3,15 @@
             <thead>
                 <tr>
                     <th><i class="fa fa-share fa-flip-vertical"></i></th>
-                    <th><?php $this->_('Teamspeak.service_info.hostname');?></th>
-                    <th><?php $this->_('Teamspeak.service_info.port');?></th>
+                    <th><?php $this->_('Teamspeak.service_info.hostname'); ?></th>
+                    <th><?php $this->_('Teamspeak.service_info.port'); ?></th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td></td>
-                    <td><?php $this->Html->_($module_row->meta->hostname);?></td>
-                    <td><?php $this->Html->_($service_fields->teamspeak_port);?></td>
+                    <td><?php $this->Html->_($module_row->meta->hostname); ?></td>
+                    <td><?php $this->Html->_($service_fields->teamspeak_port); ?></td>
                 </tr>
             </tbody>
         </table>
