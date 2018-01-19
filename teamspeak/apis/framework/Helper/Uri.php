@@ -526,7 +526,7 @@ class TeamSpeak3_Helper_Uri
 
             if (ctype_digit($val)) {
                 return (int) $val;
-            } else if (is_string($val)) {
+            } elseif (is_string($val)) {
                 return new TeamSpeak3_Helper_String($val);
             } else {
                 return $val;

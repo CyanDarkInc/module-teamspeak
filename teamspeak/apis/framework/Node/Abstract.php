@@ -147,7 +147,7 @@ abstract class TeamSpeak3_Node_Abstract implements RecursiveIterator, ArrayAcces
     {
         if ($this instanceof TeamSpeak3_Node_Channel && $this->isSpacer()) {
             return $prefix . 'spacer';
-        } else if ($this instanceof TeamSpeak3_Node_Client && $this['client_type']) {
+        } elseif ($this instanceof TeamSpeak3_Node_Client && $this['client_type']) {
             return $prefix . 'query';
         }
 
@@ -259,17 +259,17 @@ abstract class TeamSpeak3_Node_Abstract implements RecursiveIterator, ArrayAcces
 
                 if ($key->contains('_bytes_')) {
                     $info[$key->toString()] = TeamSpeak3_Helper_Convert::bytes($val);
-                } else if ($key->contains('_bandwidth_')) {
+                } elseif ($key->contains('_bandwidth_')) {
                     $info[$key->toString()] = TeamSpeak3_Helper_Convert::bytes($val) . '/s';
-                } else if ($key->contains('_packets_')) {
+                } elseif ($key->contains('_packets_')) {
                     $info[$key->toString()] = number_format($val, null, null, '.');
-                } else if ($key->contains('_packetloss_')) {
+                } elseif ($key->contains('_packetloss_')) {
                     $info[$key->toString()] = sprintf('%01.2f', (float) ($val->toString()) * 100) . '%';
-                } else if ($key->endsWith('_uptime')) {
+                } elseif ($key->endsWith('_uptime')) {
                     $info[$key->toString()] = TeamSpeak3_Helper_Convert::seconds($val);
-                } else if ($key->endsWith('_version')) {
+                } elseif ($key->endsWith('_version')) {
                     $info[$key->toString()] = TeamSpeak3_Helper_Convert::version($val);
-                } else if ($key->endsWith('_icon_id')) {
+                } elseif ($key->endsWith('_icon_id')) {
                     $info[$key->toString()] = $this->iconGetName($key)->filterDigits();
                 }
             }

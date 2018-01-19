@@ -191,7 +191,7 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
      */
     public function channelSpacerCreate($ident, $type = TeamSpeak3::SPACER_SOLIDLINE, $align = TeamSpeak3::SPACER_ALIGN_REPEAT, $order = null, $maxclients = 0)
     {
-        $properties = ['channel_name_phonetic' => 'channel spacer', 'channel_codec' => TeamSpeak3::CODEC_OPUS_VOICE, 'channel_codec_quality' => 0x00, 'channel_flag_permanent' => true, 'channel_flag_maxclients_unlimited' => false, 'channel_flag_maxfamilyclients_unlimited' => false, 'channel_flag_maxfamilyclients_inherited' => false, 'channel_maxclients' => $maxclients, 'channel_order' => $order,];
+        $properties = ['channel_name_phonetic' => 'channel spacer', 'channel_codec' => TeamSpeak3::CODEC_OPUS_VOICE, 'channel_codec_quality' => 0x00, 'channel_flag_permanent' => true, 'channel_flag_maxclients_unlimited' => false, 'channel_flag_maxfamilyclients_unlimited' => false, 'channel_flag_maxfamilyclients_inherited' => false, 'channel_maxclients' => $maxclients, 'channel_order' => $order];
 
         switch ($align) {
             case TeamSpeak3::SPACER_ALIGN_REPEAT:
@@ -1214,7 +1214,7 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
                 continue;
             }
 
-            $profiles[$sgid] = ['b_permission_modify_power_ignore' => 0, 'i_group_needed_member_add_power' => 0, 'i_group_member_add_power' => 0, 'i_group_needed_member_remove_power' => 0, 'i_group_member_remove_power' => 0, 'i_needed_modify_power_count' => 0, 'i_needed_modify_power_total' => 0, 'i_permission_modify_power' => 0, 'i_group_needed_modify_power' => 0, 'i_group_modify_power' => 0, 'i_client_needed_modify_power' => 0, 'i_client_modify_power' => 0, 'b_virtualserver_servergroup_create' => 0, 'b_virtualserver_servergroup_delete' => 0, 'b_client_ignore_bans' => 0, 'b_client_ignore_antiflood' => 0, 'b_group_is_permanent' => 0, 'i_client_needed_ban_power' => 0, 'i_client_needed_kick_power' => 0, 'i_client_needed_move_power' => 0, 'i_client_talk_power' => 0, '__sgid' => $sgid, '__name' => $sgroup->toString(), '__node' => $sgroup,];
+            $profiles[$sgid] = ['b_permission_modify_power_ignore' => 0, 'i_group_needed_member_add_power' => 0, 'i_group_member_add_power' => 0, 'i_group_needed_member_remove_power' => 0, 'i_group_member_remove_power' => 0, 'i_needed_modify_power_count' => 0, 'i_needed_modify_power_total' => 0, 'i_permission_modify_power' => 0, 'i_group_needed_modify_power' => 0, 'i_group_modify_power' => 0, 'i_client_needed_modify_power' => 0, 'i_client_modify_power' => 0, 'b_virtualserver_servergroup_create' => 0, 'b_virtualserver_servergroup_delete' => 0, 'b_client_ignore_bans' => 0, 'b_client_ignore_antiflood' => 0, 'b_group_is_permanent' => 0, 'i_client_needed_ban_power' => 0, 'i_client_needed_kick_power' => 0, 'i_client_needed_move_power' => 0, 'i_client_talk_power' => 0, '__sgid' => $sgid, '__name' => $sgroup->toString(), '__node' => $sgroup];
 
             try {
                 $perms = $this->serverGroupPermList($sgid, true);
@@ -1231,7 +1231,7 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
             foreach ($perms as $permsid => $perm) {
                 if (in_array($permsid, array_keys($profiles[$sgid]))) {
                     $profiles[$sgid][$permsid] = $perm['permvalue'];
-                } else if (TeamSpeak3_Helper_String::factory($permsid)->startsWith('i_needed_modify_power_')) {
+                } elseif (TeamSpeak3_Helper_String::factory($permsid)->startsWith('i_needed_modify_power_')) {
                     if (!$grant || $perm['permvalue'] > $grant) {
                         continue;
                     }
@@ -2387,7 +2387,7 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
     {
         if ($this['virtualserver_clientsonline'] - $this['virtualserver_queryclientsonline'] >= $this['virtualserver_maxclients']) {
             return 'server_full';
-        } else if ($this['virtualserver_flag_password']) {
+        } elseif ($this['virtualserver_flag_password']) {
             return 'server_pass';
         } else {
             return 'server_open';

@@ -376,7 +376,7 @@ class TeamSpeak3_Helper_Convert
             return 'image/svg+xml';
         }
 
-        $type = [1 => 'image/jpeg', 2 => 'image/gif', 3 => 'image/png', 4 => 'image/x-windows-bmp', 5 => 'image/tiff', 6 => 'image/x-ilbm',];
+        $type = [1 => 'image/jpeg', 2 => 'image/gif', 3 => 'image/png', 4 => 'image/x-windows-bmp', 5 => 'image/tiff', 6 => 'image/x-ilbm'];
 
         return $type[count($matches) - 1];
     }

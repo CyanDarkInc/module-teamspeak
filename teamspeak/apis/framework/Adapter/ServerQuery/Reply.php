@@ -287,7 +287,7 @@ class TeamSpeak3_Adapter_ServerQuery_Reply
                 } else {
                     $suffix = ' (failed on ' . $this->cmd->section(TeamSpeak3::SEPARATOR_CELL) . ' ' . $permid . '/0x' . strtoupper(dechex($permid)) . ')';
                 }
-            } else if ($details = $this->getErrorProperty('extra_msg')) {
+            } elseif ($details = $this->getErrorProperty('extra_msg')) {
                 $suffix = ' (' . trim($details) . ')';
             } else {
                 $suffix = '';
@@ -308,7 +308,7 @@ class TeamSpeak3_Adapter_ServerQuery_Reply
         foreach ($rpl as $key => $val) {
             if ($val->startsWith(TeamSpeak3::GREET)) {
                 unset($rpl[$key]);
-            } else if ($val->startsWith(TeamSpeak3::EVENT)) {
+            } elseif ($val->startsWith(TeamSpeak3::EVENT)) {
                 $this->evt[] = new TeamSpeak3_Adapter_ServerQuery_Event($rpl[$key], $this->con);
                 unset($rpl[$key]);
             }

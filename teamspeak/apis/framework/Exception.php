@@ -59,7 +59,7 @@ class TeamSpeak3_Exception extends Exception
      */
     protected function prepareCustomMessage(TeamSpeak3_Helper_String $mesg)
     {
-        $args = ['code' => $this->getCode(), 'mesg' => $this->getMessage(), 'line' => $this->getLine(), 'file' => $this->getFile(),];
+        $args = ['code' => $this->getCode(), 'mesg' => $this->getMessage(), 'line' => $this->getLine(), 'file' => $this->getFile()];
 
         return $mesg->arg($args)->toString();
     }

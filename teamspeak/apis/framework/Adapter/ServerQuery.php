@@ -105,7 +105,7 @@ class TeamSpeak3_Adapter_ServerQuery extends TeamSpeak3_Adapter_Abstract
 
         if (strstr($cmd, "\r") || strstr($cmd, "\n")) {
             throw new TeamSpeak3_Adapter_Exception("illegal characters in command '" . $query . "'");
-        } else if (in_array($query, $this->block)) {
+        } elseif (in_array($query, $this->block)) {
             throw new TeamSpeak3_Adapter_ServerQuery_Exception('command not found', 0x100);
         }
 
@@ -172,11 +172,11 @@ class TeamSpeak3_Adapter_ServerQuery extends TeamSpeak3_Adapter_Abstract
                 for ($i = 0; $i < count($value); $i++) {
                     if ($value[$i] === null) {
                         continue;
-                    } else if ($value[$i] === false) {
+                    } elseif ($value[$i] === false) {
                         $value[$i] = 0x00;
-                    } else if ($value[$i] === true) {
+                    } elseif ($value[$i] === true) {
                         $value[$i] = 0x01;
-                    } else if ($value[$i] instanceof TeamSpeak3_Node_Abstract) {
+                    } elseif ($value[$i] instanceof TeamSpeak3_Node_Abstract) {
                         $value[$i] = $value[$i]->getId();
                     }
 
@@ -185,11 +185,11 @@ class TeamSpeak3_Adapter_ServerQuery extends TeamSpeak3_Adapter_Abstract
             } else {
                 if ($value === null) {
                     continue;
-                } else if ($value === false) {
+                } elseif ($value === false) {
                     $value = 0x00;
-                } else if ($value === true) {
+                } elseif ($value === true) {
                     $value = 0x01;
-                } else if ($value instanceof TeamSpeak3_Node_Abstract) {
+                } elseif ($value instanceof TeamSpeak3_Node_Abstract) {
                     $value = $value->getId();
                 }
 
