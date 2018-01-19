@@ -389,17 +389,17 @@ class TeamSpeak3_Node_Client extends TeamSpeak3_Node_Abstract
     {
         if ($this['client_type']) {
             return 'client_query';
-        } else if ($this['client_away']) {
+        } elseif ($this['client_away']) {
             return 'client_away';
-        } else if (!$this['client_output_hardware']) {
+        } elseif (!$this['client_output_hardware']) {
             return 'client_snd_disabled';
-        } else if ($this['client_output_muted']) {
+        } elseif ($this['client_output_muted']) {
             return 'client_snd_muted';
-        } else if (!$this['client_input_hardware']) {
+        } elseif (!$this['client_input_hardware']) {
             return 'client_mic_disabled';
-        } else if ($this['client_input_muted']) {
+        } elseif ($this['client_input_muted']) {
             return 'client_mic_muted';
-        } else if ($this['client_is_channel_commander']) {
+        } elseif ($this['client_is_channel_commander']) {
             return $this['client_flag_talking'] ? 'client_cc_talk' : 'client_cc_idle';
         } else {
             return $this['client_flag_talking'] ? 'client_talk' : 'client_idle';

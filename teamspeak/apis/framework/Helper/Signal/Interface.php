@@ -32,7 +32,7 @@ interface TeamSpeak3_Helper_Signal_Interface
      *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("serverqueryConnected", array($object, "onConnect"));
      *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("filetransferConnected", array($object, "onConnect"));
      *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("blacklistConnected", array($object, "onConnect"));
-     *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("updateConnected", array($object, "onConnect"));
+     *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("updateConnected", array($object, "onConnect"));.
      *
      * @param  TeamSpeak3_Adapter_Abstract $adapter
      * @return void
@@ -47,7 +47,7 @@ interface TeamSpeak3_Helper_Signal_Interface
      *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("filetransferDisconnected", array($object,
      *   "onDisconnect"));
      *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("blacklistDisconnected", array($object, "onDisconnect"));
-     *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("updateDisconnected", array($object, "onDisconnect"));
+     *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("updateDisconnected", array($object, "onDisconnect"));.
      *
      * @return void
      */
@@ -57,7 +57,7 @@ interface TeamSpeak3_Helper_Signal_Interface
      * Possible callback for 'serverqueryCommandStarted' signals.
      * === Examples ===
      *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("serverqueryCommandStarted", array($object,
-     *   "onCommandStarted"));
+     *   "onCommandStarted"));.
      *
      * @param  string $cmd
      * @return void
@@ -68,7 +68,7 @@ interface TeamSpeak3_Helper_Signal_Interface
      * Possible callback for 'serverqueryCommandFinished' signals.
      * === Examples ===
      *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("serverqueryCommandFinished", array($object,
-     *   "onCommandFinished"));
+     *   "onCommandFinished"));.
      *
      * @param  string                               $cmd
      * @param  TeamSpeak3_Adapter_ServerQuery_Reply $reply
@@ -79,7 +79,7 @@ interface TeamSpeak3_Helper_Signal_Interface
     /**
      * Possible callback for 'notifyEvent' signals.
      * === Examples ===
-     *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("notifyEvent", array($object, "onEvent"));
+     *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("notifyEvent", array($object, "onEvent"));.
      *
      * @param  TeamSpeak3_Adapter_ServerQuery_Event $event
      * @param  TeamSpeak3_Node_Host                 $host
@@ -90,7 +90,7 @@ interface TeamSpeak3_Helper_Signal_Interface
     /**
      * Possible callback for 'notifyError' signals.
      * === Examples ===
-     *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("notifyError", array($object, "onError"));
+     *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("notifyError", array($object, "onError"));.
      *
      * @param  TeamSpeak3_Adapter_ServerQuery_Reply $reply
      * @return void
@@ -101,7 +101,7 @@ interface TeamSpeak3_Helper_Signal_Interface
      * Possible callback for 'notifyServerselected' signals.
      * === Examples ===
      *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("notifyServerselected", array($object,
-     *   "onServerselected"));
+     *   "onServerselected"));.
      *
      * @param  TeamSpeak3_Node_Host $host
      * @return void
@@ -111,7 +111,7 @@ interface TeamSpeak3_Helper_Signal_Interface
     /**
      * Possible callback for 'notifyServercreated' signals.
      * === Examples ===
-     *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("notifyServercreated", array($object, "onServercreated"));
+     *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("notifyServercreated", array($object, "onServercreated"));.
      *
      * @param  TeamSpeak3_Node_Host $host
      * @param  int                  $sid
@@ -122,7 +122,7 @@ interface TeamSpeak3_Helper_Signal_Interface
     /**
      * Possible callback for 'notifyServerdeleted' signals.
      * === Examples ===
-     *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("notifyServerdeleted", array($object, "onServerdeleted"));
+     *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("notifyServerdeleted", array($object, "onServerdeleted"));.
      *
      * @param  TeamSpeak3_Node_Host $host
      * @param  int                  $sid
@@ -133,7 +133,7 @@ interface TeamSpeak3_Helper_Signal_Interface
     /**
      * Possible callback for 'notifyServerstarted' signals.
      * === Examples ===
-     *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("notifyServerstarted", array($object, "onServerstarted"));
+     *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("notifyServerstarted", array($object, "onServerstarted"));.
      *
      * @param  TeamSpeak3_Node_Host $host
      * @param  int                  $sid
@@ -144,7 +144,7 @@ interface TeamSpeak3_Helper_Signal_Interface
     /**
      * Possible callback for 'notifyServerstopped' signals.
      * === Examples ===
-     *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("notifyServerstopped", array($object, "onServerstopped"));
+     *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("notifyServerstopped", array($object, "onServerstopped"));.
      *
      * @param  TeamSpeak3_Node_Host $host
      * @param  int                  $sid
@@ -156,7 +156,7 @@ interface TeamSpeak3_Helper_Signal_Interface
      * Possible callback for 'notifyServershutdown' signals.
      * === Examples ===
      *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("notifyServershutdown", array($object,
-     *   "onServershutdown"));
+     *   "onServershutdown"));.
      *
      * @param  TeamSpeak3_Node_Host $host
      * @return void
@@ -166,7 +166,7 @@ interface TeamSpeak3_Helper_Signal_Interface
     /**
      * Possible callback for 'notifyLogin' signals.
      * === Examples ===
-     *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("notifyLogin", array($object, "onLogin"));
+     *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("notifyLogin", array($object, "onLogin"));.
      *
      * @param  TeamSpeak3_Node_Host $host
      * @return void
@@ -176,7 +176,7 @@ interface TeamSpeak3_Helper_Signal_Interface
     /**
      * Possible callback for 'notifyLogout' signals.
      * === Examples ===
-     *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("notifyLogout", array($object, "onLogout"));
+     *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("notifyLogout", array($object, "onLogout"));.
      *
      * @param  TeamSpeak3_Node_Host $host
      * @return void
@@ -186,7 +186,7 @@ interface TeamSpeak3_Helper_Signal_Interface
     /**
      * Possible callback for 'notifyTokencreated' signals.
      * === Examples ===
-     *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("notifyTokencreated", array($object, "onTokencreated"));
+     *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("notifyTokencreated", array($object, "onTokencreated"));.
      *
      * @param  TeamSpeak3_Node_Server $server
      * @param  string                 $token
@@ -197,7 +197,7 @@ interface TeamSpeak3_Helper_Signal_Interface
     /**
      * Possible callback for 'filetransferHandshake' signals.
      * === Examples ===
-     *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("filetransferHandshake", array($object, "onFtHandshake"));
+     *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("filetransferHandshake", array($object, "onFtHandshake"));.
      *
      * @param  TeamSpeak3_Adapter_FileTransfer $adapter
      * @return void
@@ -208,7 +208,7 @@ interface TeamSpeak3_Helper_Signal_Interface
      * Possible callback for 'filetransferUploadStarted' signals.
      * === Examples ===
      *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("filetransferUploadStarted", array($object,
-     *   "onFtUploadStarted"));
+     *   "onFtUploadStarted"));.
      *
      * @param  string $ftkey
      * @param  int    $seek
@@ -221,7 +221,7 @@ interface TeamSpeak3_Helper_Signal_Interface
      * Possible callback for 'filetransferUploadProgress' signals.
      * === Examples ===
      *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("filetransferUploadProgress", array($object,
-     *   "onFtUploadProgress"));
+     *   "onFtUploadProgress"));.
      *
      * @param  string $ftkey
      * @param  int    $seek
@@ -234,7 +234,7 @@ interface TeamSpeak3_Helper_Signal_Interface
      * Possible callback for 'filetransferUploadFinished' signals.
      * === Examples ===
      *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("filetransferUploadFinished", array($object,
-     *   "onFtUploadFinished"));
+     *   "onFtUploadFinished"));.
      *
      * @param  string $ftkey
      * @param  int    $seek
@@ -247,7 +247,7 @@ interface TeamSpeak3_Helper_Signal_Interface
      * Possible callback for 'filetransferDownloadStarted' signals.
      * === Examples ===
      *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("filetransferDownloadStarted", array($object,
-     *   "onFtDownloadStarted"));
+     *   "onFtDownloadStarted"));.
      *
      * @param  string $ftkey
      * @param  int    $buff
@@ -260,7 +260,7 @@ interface TeamSpeak3_Helper_Signal_Interface
      * Possible callback for 'filetransferDownloadProgress' signals.
      * === Examples ===
      *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("filetransferDownloadProgress", array($object,
-     *   "onFtDownloadProgress"));
+     *   "onFtDownloadProgress"));.
      *
      * @param  string $ftkey
      * @param  int    $buff
@@ -273,7 +273,7 @@ interface TeamSpeak3_Helper_Signal_Interface
      * Possible callback for 'filetransferDownloadFinished' signals.
      * === Examples ===
      *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("filetransferDownloadFinished", array($object,
-     *   "onFtDownloadFinished"));
+     *   "onFtDownloadFinished"));.
      *
      * @param  string $ftkey
      * @param  int    $buff
@@ -290,7 +290,7 @@ interface TeamSpeak3_Helper_Signal_Interface
      *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("filetransferDataRead", array($object,
      *   "onDebugDataRead"));
      *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("blacklistDataRead", array($object, "onDebugDataRead"));
-     *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("updateDataRead", array($object, "onDebugDataRead"));
+     *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("updateDataRead", array($object, "onDebugDataRead"));.
      *
      * @param  string $data
      * @return void
@@ -305,7 +305,7 @@ interface TeamSpeak3_Helper_Signal_Interface
      *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("filetransferDataSend", array($object,
      *   "onDebugDataSend"));
      *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("blacklistDataSend", array($object, "onDebugDataSend"));
-     *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("updateDataSend", array($object, "onDebugDataSend"));
+     *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("updateDataSend", array($object, "onDebugDataSend"));.
      *
      * @param  string $data
      * @return void
@@ -320,7 +320,7 @@ interface TeamSpeak3_Helper_Signal_Interface
      *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("filetransferWaitTimeout", array($object,
      *   "onWaitTimeout"));
      *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("blacklistWaitTimeout", array($object, "onWaitTimeout"));
-     *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("updateWaitTimeout", array($object, "onWaitTimeout"));
+     *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("updateWaitTimeout", array($object, "onWaitTimeout"));.
      *
      * @param  int                         $time
      * @param  TeamSpeak3_Adapter_Abstract $adapter
@@ -331,7 +331,7 @@ interface TeamSpeak3_Helper_Signal_Interface
     /**
      * Possible callback for 'errorException' signals.
      * === Examples ===
-     *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("errorException", array($object, "onException"));
+     *   - TeamSpeak3_Helper_Signal::getInstance()->subscribe("errorException", array($object, "onException"));.
      *
      * @param  TeamSpeak3_Exception $e
      * @return void

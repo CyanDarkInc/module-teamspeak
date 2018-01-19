@@ -45,7 +45,7 @@ class TeamSpeak3_Viewer_Text implements TeamSpeak3_Viewer_Interface
         $this->currObj = $node;
         $this->currSib = $siblings;
 
-        $args = [$this->getPrefix(), $this->getCorpusIcon(), $this->getCorpusName(),];
+        $args = [$this->getPrefix(), $this->getCorpusIcon(), $this->getCorpusName()];
 
         return TeamSpeak3_Helper_String::factory($this->pattern)->arg($args);
     }

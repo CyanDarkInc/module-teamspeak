@@ -539,7 +539,7 @@ class TeamSpeak3_Node_Channel extends TeamSpeak3_Node_Abstract
     {
         if ($this['channel_maxclients'] != -1 && $this['channel_maxclients'] <= $this['total_clients']) {
             return 'channel_full';
-        } else if ($this['channel_flag_password']) {
+        } elseif ($this['channel_flag_password']) {
             return 'channel_pass';
         } else {
             return 'channel_open';

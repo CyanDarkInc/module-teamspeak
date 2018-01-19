@@ -34,7 +34,7 @@ class TeamspeakApi
 
     /**
      * Initializes the class.
-     * 
+     *
      * @param string $hostname The TeamSpeak server hostname.
      * @param string $username The TeamSpeak server username.
      * @param string $password The TeamSpeak server password.

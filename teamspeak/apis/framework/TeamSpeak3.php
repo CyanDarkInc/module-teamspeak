@@ -291,7 +291,7 @@ class TeamSpeak3
      *   - serverquery://127.0.0.1:10011/?server_port=9987&client_name=ScP
      *   - filetransfer://127.0.0.1:30011/
      *   - blacklist
-     *   - update
+     *   - update.
      *
      * @param  string $uri
      * @return TeamSpeak3_Adapter_Abstract
@@ -325,38 +325,38 @@ class TeamSpeak3
 
             if ($uri->getFragment() == 'use_offline_as_virtual') {
                 $node->setUseOfflineAsVirtual(true);
-            } else if ($uri->hasQueryVar('use_offline_as_virtual')) {
+            } elseif ($uri->hasQueryVar('use_offline_as_virtual')) {
                 $node->setUseOfflineAsVirtual($uri->getQueryVar('use_offline_as_virtual') ? true : false);
             }
 
             if ($uri->getFragment() == 'clients_before_channels') {
                 $node->setLoadClientlistFirst(true);
-            } else if ($uri->hasQueryVar('clients_before_channels')) {
+            } elseif ($uri->hasQueryVar('clients_before_channels')) {
                 $node->setLoadClientlistFirst($uri->getQueryVar('clients_before_channels') ? true : false);
             }
 
             if ($uri->getFragment() == 'no_query_clients') {
                 $node->setExcludeQueryClients(true);
-            } else if ($uri->hasQueryVar('no_query_clients')) {
+            } elseif ($uri->hasQueryVar('no_query_clients')) {
                 $node->setExcludeQueryClients($uri->getQueryVar('no_query_clients') ? true : false);
             }
 
             if ($uri->hasQueryVar('server_id')) {
                 $node = $node->serverGetById($uri->getQueryVar('server_id'));
-            } else if ($uri->hasQueryVar('server_uid')) {
+            } elseif ($uri->hasQueryVar('server_uid')) {
                 $node = $node->serverGetByUid($uri->getQueryVar('server_uid'));
-            } else if ($uri->hasQueryVar('server_port')) {
+            } elseif ($uri->hasQueryVar('server_port')) {
                 $node = $node->serverGetByPort($uri->getQueryVar('server_port'));
-            } else if ($uri->hasQueryVar('server_name')) {
+            } elseif ($uri->hasQueryVar('server_name')) {
                 $node = $node->serverGetByName($uri->getQueryVar('server_name'));
-            } else if ($uri->hasQueryVar('server_tsdns')) {
+            } elseif ($uri->hasQueryVar('server_tsdns')) {
                 $node = $node->serverGetByTSDNS($uri->getQueryVar('server_tsdns'));
             }
 
             if ($node instanceof TeamSpeak3_Node_Server) {
                 if ($uri->hasQueryVar('channel_id')) {
                     $node = $node->channelGetById($uri->getQueryVar('channel_id'));
-                } else if ($uri->hasQueryVar('channel_name')) {
+                } elseif ($uri->hasQueryVar('channel_name')) {
                     $node = $node->channelGetByName($uri->getQueryVar('channel_name'));
                 }
 
@@ -365,7 +365,7 @@ class TeamSpeak3
                 }
                 if ($uri->hasQueryVar('client_uid')) {
                     $node = $node->clientGetByUid($uri->getQueryVar('client_uid'));
-                } else if ($uri->hasQueryVar('client_name')) {
+                } elseif ($uri->hasQueryVar('client_name')) {
                     $node = $node->clientGetByName($uri->getQueryVar('client_name'));
                 }
             }

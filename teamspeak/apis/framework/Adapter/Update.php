@@ -105,7 +105,7 @@ class TeamSpeak3_Adapter_Update extends TeamSpeak3_Adapter_Abstract
      * - stable
      * - beta
      * - alpha
-     * - server
+     * - server.
      *
      * @param  string $channel
      * @throws TeamSpeak3_Adapter_Update_Exception
@@ -137,7 +137,7 @@ class TeamSpeak3_Adapter_Update extends TeamSpeak3_Adapter_Abstract
      * - stable
      * - beta
      * - alpha
-     * - server
+     * - server.
      *
      * @param  string $channel
      * @throws TeamSpeak3_Adapter_Update_Exception
