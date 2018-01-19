@@ -15,8 +15,7 @@
                     if (!empty($tokens->tokens)) {
                         $i = 0;
                         foreach ($tokens->tokens as $token) {
-                            $date = date('M d, Y', $token->token_created);
-                ?>
+                            $date = date('M d, Y', $token->token_created); ?>
                     <tr<?php echo $this->Html->concat(' ', ($i % 2 == 1) ? ' class="odd_row"' : '', ''); ?>>
                         <td><?php $this->Html->_($date); ?></td>
                         <td><?php $this->Html->_($token->token); ?></td>
@@ -24,22 +23,20 @@
                         <td>
                             <?php
                                 $this->Form->create();
-                                $this->Form->fieldHidden('action', 'delete_token');
-                                $this->Form->fieldHidden('token', $token->token);
-                            ?>
+                            $this->Form->fieldHidden('action', 'delete_token');
+                            $this->Form->fieldHidden('token', $token->token); ?>
                                 <a href="#" class="submit manage">
                                     <?php $this->_('Teamspeak.tab_tokens.action_delete_token'); ?>
                                 </a>
                             <?php
-                                $this->Form->end();
-                            ?>
+                                $this->Form->end(); ?>
                         </td>
                     </tr>
                 <?php
                             $i++;
                         }
                     } else {
-                ?>
+                        ?>
                     <tr>
                         <td colspan="4"><?php $this->_('Teamspeak.tab_tokens.text_no_tokens'); ?></td>
                     </tr>

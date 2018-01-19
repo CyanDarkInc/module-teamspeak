@@ -7,7 +7,7 @@
             if ($server_info->state == 'online') {
                 $status_class = 'success';
                 $status = 'online';
-            } else if ($server_info->state == 'offline') {
+            } elseif ($server_info->state == 'offline') {
                 $status_class = 'danger';
                 $status = 'offline';
             }
@@ -40,7 +40,7 @@
                     $this->Form->fieldHidden('action', 'change_name');
                 ?>
                 <button class="name btn btn-default btn-block" style="margin-top: 5px;">
-                    <i class="fa fa-edit"></i> <?php $this->_('Teamspeak.tab_client_actions.action_edit_name');?>
+                    <i class="fa fa-edit"></i> <?php $this->_('Teamspeak.tab_client_actions.action_edit_name'); ?>
                 </button>
                 <?php
                     $this->Form->end();
@@ -63,7 +63,7 @@
                     $this->Form->fieldHidden('action', 'remove_ban');
                 ?>
                 <button class="btn btn-default btn-block" style="margin-top: 5px;">
-                    <i class="fa fa-ban"></i> <?php $this->_('Teamspeak.tab_client_actions.action_remove_ban');?>
+                    <i class="fa fa-ban"></i> <?php $this->_('Teamspeak.tab_client_actions.action_remove_ban'); ?>
                 </button>
                 <?php
                     $this->Form->end();
@@ -86,7 +86,7 @@
                     $this->Form->fieldHidden('action', 'reset_permissions');
                 ?>
                 <button class="btn btn-default btn-block" style="margin-top: 5px;">
-                    <i class="fa fa-refresh"></i> <?php $this->_('Teamspeak.tab_client_actions.action_reset_permissions');?>
+                    <i class="fa fa-refresh"></i> <?php $this->_('Teamspeak.tab_client_actions.action_reset_permissions'); ?>
                 </button>
                 <?php
                     $this->Form->end();

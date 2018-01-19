@@ -8,7 +8,6 @@
  * @license http://www.blesta.com/license/ The Blesta License Agreement
  * @link http://www.blesta.com/ Blesta
  */
-
 require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'framework' . DIRECTORY_SEPARATOR . 'TeamSpeak3.php';
 
 class TeamspeakApi
@@ -35,6 +34,10 @@ class TeamspeakApi
 
     /**
      * Initializes the class.
+     * @param mixed $hostname
+     * @param mixed $username
+     * @param mixed $password
+     * @param mixed $port
      */
     public function __construct($hostname, $username, $password, $port = 10011)
     {
@@ -60,7 +63,7 @@ class TeamspeakApi
 
         // Initialize TeamSpeak 3 Framework
         $framework = TeamSpeak3::factory($uri);
-        
+
         return $framework;
     }
 
@@ -167,24 +170,24 @@ class TeamspeakApi
     public function deleteServer($sid)
     {
         try {
-            // Stop the virtual server 
+            // Stop the virtual server
             try {
                 $this->apiRequest('serverquery')->serverStop($sid);
             } catch (Exception $e) {
                 // Throw the exception only if the code isn't equal to 1033
                 $code = $e->getCode();
-                if ($code ==! 1033) {
+                if ($code == !1033) {
                     throw $e;
                 }
             }
-            
+
             // Delete the virtual server
             $this->apiRequest('serverquery')->serverDelete($sid);
 
             // Build the result
             $result = [
                 'status' => true
-            ]; 
+            ];
         } catch (Exception $e) {
             $result = [
                 'error' => $e->getMessage(),
@@ -207,7 +210,7 @@ class TeamspeakApi
         try {
             // Get the virtual server
             $instance = $this->apiRequest('serverquery')->serverGetById($sid);
-            
+
             // Build result
             $result = [];
             if (!empty($instance)) {
@@ -236,7 +239,7 @@ class TeamspeakApi
      */
     public function listServers()
     {
-        try {            
+        try {
             $servers = $this->apiRequest('serverquery')->serverList();
 
             // Build result
@@ -269,13 +272,13 @@ class TeamspeakApi
     public function startServer($sid)
     {
         try {
-            // Start the virtual server 
+            // Start the virtual server
             try {
                 $result = $this->apiRequest('serverquery')->serverStart($sid);
             } catch (Exception $e) {
                 // Throw the exception only if the code isn't equal to 1033
                 $code = $e->getCode();
-                if ($code ==! 1033) {
+                if ($code == !1033) {
                     throw $e;
                 }
             }
@@ -312,7 +315,7 @@ class TeamspeakApi
             } catch (Exception $e) {
                 // Throw the exception only if the code isn't equal to 1033
                 $code = $e->getCode();
-                if ($code ==! 1033) {
+                if ($code == !1033) {
                     throw $e;
                 }
             }
@@ -341,13 +344,13 @@ class TeamspeakApi
     public function stopServer($sid)
     {
         try {
-            // Stop the virtual server 
+            // Stop the virtual server
             try {
                 $result = $this->apiRequest('serverquery')->serverStop($sid);
             } catch (Exception $e) {
                 // Throw the exception only if the code isn't equal to 1033
                 $code = $e->getCode();
-                if ($code ==! 1033) {
+                if ($code == !1033) {
                     throw $e;
                 }
             }
@@ -379,9 +382,9 @@ class TeamspeakApi
         $server = $this->getServer($sid);
 
         // Check the state of the virtual server
-        if (isset($server->error) && $server->code ==! 1033) {
+        if (isset($server->error) && $server->code == !1033) {
             return $server;
-        } else if (isset($server->error) && $server->code === 1033) {
+        } elseif (isset($server->error) && $server->code === 1033) {
             $state = false;
         } else {
             $state = $server->instance->isOnline();
@@ -552,7 +555,7 @@ class TeamspeakApi
             // Build the result
             $result = [
                 'status' => true
-            ]; 
+            ];
         } catch (Exception $e) {
             $result = [
                 'error' => $e->getMessage(),
@@ -595,7 +598,7 @@ class TeamspeakApi
             $result = [
                 'tokens' => $options,
                 'status' => true
-            ];   
+            ];
         } catch (Exception $e) {
             $result = [
                 'error' => $e->getMessage(),
@@ -604,7 +607,7 @@ class TeamspeakApi
             ];
         }
 
-        return (object) $result; 
+        return (object) $result;
     }
 
     /**
@@ -632,7 +635,7 @@ class TeamspeakApi
             // Build the result
             $result = [
                 'status' => true
-            ]; 
+            ];
         } catch (Exception $e) {
             $result = [
                 'error' => $e->getMessage(),
@@ -682,7 +685,7 @@ class TeamspeakApi
             ];
         }
 
-        return (object) $result;   
+        return (object) $result;
     }
 
     /**
@@ -733,7 +736,7 @@ class TeamspeakApi
             ];
         }
 
-        return (object) $result;     
+        return (object) $result;
     }
 
     /**
@@ -761,7 +764,7 @@ class TeamspeakApi
             $result = [
                 'token' => (string) $token,
                 'status' => true
-            ];           
+            ];
         } catch (Exception $e) {
             $result = [
                 'error' => $e->getMessage(),
@@ -770,7 +773,7 @@ class TeamspeakApi
             ];
         }
 
-        return (object) $result; 
+        return (object) $result;
     }
 
     /**
@@ -815,7 +818,7 @@ class TeamspeakApi
             $result = [
                 'log' => $log,
                 'status' => true
-            ];         
+            ];
         } catch (Exception $e) {
             $result = [
                 'error' => $e->getMessage(),
@@ -824,7 +827,7 @@ class TeamspeakApi
             ];
         }
 
-        return (object) $result; 
+        return (object) $result;
     }
 
     /**
@@ -854,7 +857,7 @@ class TeamspeakApi
             $result = [
                 'banid' => $banid,
                 'status' => true
-            ]; 
+            ];
         } catch (Exception $e) {
             $result = [
                 'error' => $e->getMessage(),
@@ -891,7 +894,7 @@ class TeamspeakApi
             // Build the result
             $result = [
                 'status' => true
-            ]; 
+            ];
         } catch (Exception $e) {
             $result = [
                 'error' => $e->getMessage(),
@@ -927,7 +930,7 @@ class TeamspeakApi
             // Build the result
             $result = [
                 'status' => true
-            ];           
+            ];
         } catch (Exception $e) {
             $result = [
                 'error' => $e->getMessage(),
@@ -936,7 +939,7 @@ class TeamspeakApi
             ];
         }
 
-        return (object) $result; 
+        return (object) $result;
     }
 
     /**
@@ -970,7 +973,7 @@ class TeamspeakApi
             $result = [
                 'bans' => $options,
                 'status' => true
-            ]; 
+            ];
         } catch (Exception $e) {
             $result = [
                 'error' => $e->getMessage(),
@@ -979,6 +982,6 @@ class TeamspeakApi
             ];
         }
 
-        return (object) $result;  
+        return (object) $result;
     }
 }

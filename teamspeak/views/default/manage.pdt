@@ -11,7 +11,7 @@
         ?>
 
         <div class="title_row first">
-            <h3><?php $this->_('Teamspeak.manage.module_rows_title');?></h3>
+            <h3><?php $this->_('Teamspeak.manage.module_rows_title'); ?></h3>
         </div>
         <?php
         $num_rows = count($this->Html->ifSet($module->rows));
@@ -19,39 +19,38 @@
             ?>
         <table class="table">
             <tr class="heading_row">
-                <td><span><?php $this->_('Teamspeak.manage.module_rows_heading.name');?></span></td>
-                <td><span><?php $this->_('Teamspeak.manage.module_rows_heading.hostname');?></span></td>
-                <td><span><?php $this->_('Teamspeak.manage.module_rows_heading.accounts');?></span></td>
-                <td class="last"><span><?php $this->_('Teamspeak.manage.module_rows_heading.options');?></span></td>
+                <td><span><?php $this->_('Teamspeak.manage.module_rows_heading.name'); ?></span></td>
+                <td><span><?php $this->_('Teamspeak.manage.module_rows_heading.hostname'); ?></span></td>
+                <td><span><?php $this->_('Teamspeak.manage.module_rows_heading.accounts'); ?></span></td>
+                <td class="last"><span><?php $this->_('Teamspeak.manage.module_rows_heading.options'); ?></span></td>
             </tr>
             <?php
             for ($i = 0; $i < $num_rows; $i++) {
                 ?>
-            <tr<?php echo ($i % 2 == 1) ? ' class="odd_row"' : '';?>>
-                <td><?php $this->Html->_($module->rows[$i]->meta->server_name);?></td>
-                <td><?php $this->Html->_($module->rows[$i]->meta->hostname);?></td>
-                <td><?php $this->_('Teamspeak.manage.module_rows.count', false, $this->Html->ifSet($module->rows[$i]->meta->account_count, 0), ($this->Html->ifSet($module->rows[$i]->meta->account_limit) == '' ? '∞' : $module->rows[$i]->meta->account_limit));?></td>
+            <tr<?php echo ($i % 2 == 1) ? ' class="odd_row"' : ''; ?>>
+                <td><?php $this->Html->_($module->rows[$i]->meta->server_name); ?></td>
+                <td><?php $this->Html->_($module->rows[$i]->meta->hostname); ?></td>
+                <td><?php $this->_('Teamspeak.manage.module_rows.count', false, $this->Html->ifSet($module->rows[$i]->meta->account_count, 0), ($this->Html->ifSet($module->rows[$i]->meta->account_limit) == '' ? '∞' : $module->rows[$i]->meta->account_limit)); ?></td>
                 <td>
-                    <a href="<?php echo $this->Html->safe($this->base_uri . 'settings/company/modules/editrow/' . $this->Html->ifSet($module->id) . '/' . $this->Html->ifSet($module->rows[$i]->id) . '/');?>"><?php $this->_('Teamspeak.manage.module_rows.edit');?></a>
+                    <a href="<?php echo $this->Html->safe($this->base_uri . 'settings/company/modules/editrow/' . $this->Html->ifSet($module->id) . '/' . $this->Html->ifSet($module->rows[$i]->id) . '/'); ?>"><?php $this->_('Teamspeak.manage.module_rows.edit'); ?></a>
                     <?php
                     $this->Form->create($this->base_uri . 'settings/company/modules/deleterow/');
-                    $this->Form->fieldHidden('id', $this->Html->ifSet($module->id));
-                    $this->Form->fieldHidden('row_id', $this->Html->ifSet($module->rows[$i]->id));?>
-                    <a href="<?php echo $this->Html->safe($this->base_uri . 'settings/company/modules/deleterow/' . $this->Html->ifSet($module->id) . '/' . $this->Html->ifSet($module->rows[$i]->id) . '/');?>" class="manage" rel="<?php echo $this->Html->safe($this->_('Teamspeak.manage.module_rows.confirm_delete', true));?>"><?php $this->_('Teamspeak.manage.module_rows.delete');?></a>
+                $this->Form->fieldHidden('id', $this->Html->ifSet($module->id));
+                $this->Form->fieldHidden('row_id', $this->Html->ifSet($module->rows[$i]->id)); ?>
+                    <a href="<?php echo $this->Html->safe($this->base_uri . 'settings/company/modules/deleterow/' . $this->Html->ifSet($module->id) . '/' . $this->Html->ifSet($module->rows[$i]->id) . '/'); ?>" class="manage" rel="<?php echo $this->Html->safe($this->_('Teamspeak.manage.module_rows.confirm_delete', true)); ?>"><?php $this->_('Teamspeak.manage.module_rows.delete'); ?></a>
                     <?php
-                    $this->Form->end();?>
+                    $this->Form->end(); ?>
                 </td>
             </tr>
             <?php
-            }
-            ?>
+            } ?>
         </table>
         <?php
         } else {
-        ?>
+            ?>
         <div class="empty_section">
             <div class="empty_box">
-                <?php $this->_('Teamspeak.manage.module_rows_no_results');?>
+                <?php $this->_('Teamspeak.manage.module_rows_no_results'); ?>
             </div>
         </div>
         <?php
@@ -59,7 +58,7 @@
         ?>
 
         <div class="title_row">
-            <h3><?php $this->_('Teamspeak.manage.module_groups_title');?></h3>
+            <h3><?php $this->_('Teamspeak.manage.module_groups_title'); ?></h3>
         </div>
         <?php
         $num_rows = count($this->Html->ifSet($module->groups));
@@ -67,37 +66,36 @@
             ?>
         <table class="table">
             <tr class="heading_row">
-                <td><span><?php $this->_('Teamspeak.manage.module_groups_heading.name');?></span></td>
-                <td><span><?php $this->_('Teamspeak.manage.module_groups_heading.servers');?></span></td>
-                <td class="last"><span><?php $this->_('Teamspeak.manage.module_groups_heading.options');?></span></td>
+                <td><span><?php $this->_('Teamspeak.manage.module_groups_heading.name'); ?></span></td>
+                <td><span><?php $this->_('Teamspeak.manage.module_groups_heading.servers'); ?></span></td>
+                <td class="last"><span><?php $this->_('Teamspeak.manage.module_groups_heading.options'); ?></span></td>
             </tr>
             <?php
             for ($i = 0; $i < $num_rows; $i++) {
-            ?>
-            <tr<?php echo ($i % 2 == 1) ? ' class="odd_row"' : '';?>>
-                <td><?php $this->Html->_($module->groups[$i]->name);?></td>
-                <td><?php echo count($this->Html->ifSet($module->groups[$i]->rows));?></td>
+                ?>
+            <tr<?php echo ($i % 2 == 1) ? ' class="odd_row"' : ''; ?>>
+                <td><?php $this->Html->_($module->groups[$i]->name); ?></td>
+                <td><?php echo count($this->Html->ifSet($module->groups[$i]->rows)); ?></td>
                 <td>
-                    <a href="<?php echo $this->Html->safe($this->base_uri . 'settings/company/modules/editgroup/' . $this->Html->ifSet($module->id) . '/' . $this->Html->ifSet($module->groups[$i]->id) . '/');?>"><?php $this->_('Teamspeak.manage.module_groups.edit');?></a>
+                    <a href="<?php echo $this->Html->safe($this->base_uri . 'settings/company/modules/editgroup/' . $this->Html->ifSet($module->id) . '/' . $this->Html->ifSet($module->groups[$i]->id) . '/'); ?>"><?php $this->_('Teamspeak.manage.module_groups.edit'); ?></a>
                     <?php
                     $this->Form->create($this->base_uri . 'settings/company/modules/deletegroup/');
-                    $this->Form->fieldHidden('id', $this->Html->ifSet($module->id));
-                    $this->Form->fieldHidden('group_id', $this->Html->ifSet($module->groups[$i]->id));?>
-                    <a href="<?php echo $this->Html->safe($this->base_uri . 'settings/company/modules/deletegroup/' . $this->Html->ifSet($module->id) . '/' . $this->Html->ifSet($module->groups[$i]->id) . '/');?>" class="manage" rel="<?php echo $this->Html->safe($this->_('Teamspeak.manage.module_groups.confirm_delete', true));?>"><?php $this->_('Teamspeak.manage.module_groups.delete');?></a>
+                $this->Form->fieldHidden('id', $this->Html->ifSet($module->id));
+                $this->Form->fieldHidden('group_id', $this->Html->ifSet($module->groups[$i]->id)); ?>
+                    <a href="<?php echo $this->Html->safe($this->base_uri . 'settings/company/modules/deletegroup/' . $this->Html->ifSet($module->id) . '/' . $this->Html->ifSet($module->groups[$i]->id) . '/'); ?>" class="manage" rel="<?php echo $this->Html->safe($this->_('Teamspeak.manage.module_groups.confirm_delete', true)); ?>"><?php $this->_('Teamspeak.manage.module_groups.delete'); ?></a>
                     <?php
-                    $this->Form->end();?>
+                    $this->Form->end(); ?>
                 </td>
             </tr>
             <?php
-            }
-            ?>
+            } ?>
         </table>
         <?php
         } else {
-        ?>
+            ?>
         <div class="empty_section">
             <div class="empty_box">
-                <?php $this->_('Teamspeak.manage.module_groups_no_results');?>
+                <?php $this->_('Teamspeak.manage.module_groups_no_results'); ?>
             </div>
         </div>
         <?php

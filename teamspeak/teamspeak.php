@@ -479,7 +479,7 @@ class Teamspeak extends Module
             )
         );
         // Set the label as a field
-        $fields->setField($port);        
+        $fields->setField($port);
 
         // Create sid label
         $sid = $fields->label(Language::_('Teamspeak.service_field.sid', true), 'teamspeak_sid');
@@ -510,6 +510,7 @@ class Teamspeak extends Module
     public function validateService($package, array $vars = null)
     {
         $this->Input->setRules($this->getServiceRules($vars));
+
         return $this->Input->validates($vars);
     }
 
@@ -523,11 +524,12 @@ class Teamspeak extends Module
     public function validateServiceEdit($service, array $vars = null)
     {
         $this->Input->setRules($this->getServiceRules($vars, true));
+
         return $this->Input->validates($vars);
     }
 
     /**
-     * Returns the rule set for adding/editing a service
+     * Returns the rule set for adding/editing a service.
      *
      * @param array $vars A list of input vars
      * @param bool $edit True to get the edit rules, false for the add rules
@@ -571,7 +573,8 @@ class Teamspeak extends Module
      * @see Module::getModule()
      * @see Module::getModuleRow()
      */
-    public function addService($package, array $vars = null, $parent_package = null, $parent_service = null, $status = 'pending') {
+    public function addService($package, array $vars = null, $parent_package = null, $parent_service = null, $status = 'pending')
+    {
         $row = $this->getModuleRow();
 
         if (!$row) {
@@ -1068,7 +1071,7 @@ class Teamspeak extends Module
         $this->view->set('service_fields', $service_fields);
         $this->view->set('service_id', $service->id);
         $this->view->set('server_clients', $server_clients);
-        $this->view->set('vars', (isset($vars) ? (object)$vars : new stdClass()));
+        $this->view->set('vars', (isset($vars) ? (object) $vars : new stdClass()));
 
         $this->view->setDefaultView('components' . DS . 'modules' . DS . 'teamspeak' . DS);
 
@@ -1127,7 +1130,7 @@ class Teamspeak extends Module
         $this->view->set('service_fields', $service_fields);
         $this->view->set('service_id', $service->id);
         $this->view->set('server_bans', $server_bans);
-        $this->view->set('vars', (isset($vars) ? (object)$vars : new stdClass()));
+        $this->view->set('vars', (isset($vars) ? (object) $vars : new stdClass()));
 
         $this->view->setDefaultView('components' . DS . 'modules' . DS . 'teamspeak' . DS);
 
@@ -1326,7 +1329,7 @@ class Teamspeak extends Module
         $this->view->set('service_fields', $service_fields);
         $this->view->set('service_id', $service->id);
         $this->view->set('server_info', $server_info);
-        $this->view->set('vars', (isset($vars) ? (object)$vars : new stdClass()));
+        $this->view->set('vars', (isset($vars) ? (object) $vars : new stdClass()));
 
         $this->view->setDefaultView('components' . DS . 'modules' . DS . 'teamspeak' . DS);
 
@@ -1382,7 +1385,7 @@ class Teamspeak extends Module
         $this->view->set('service_fields', $service_fields);
         $this->view->set('service_id', $service->id);
         $this->view->set('server_clients', $server_clients);
-        $this->view->set('vars', (isset($vars) ? (object)$vars : new stdClass()));
+        $this->view->set('vars', (isset($vars) ? (object) $vars : new stdClass()));
 
         $this->view->setDefaultView('components' . DS . 'modules' . DS . 'teamspeak' . DS);
 
@@ -1441,7 +1444,7 @@ class Teamspeak extends Module
         $this->view->set('service_fields', $service_fields);
         $this->view->set('service_id', $service->id);
         $this->view->set('server_bans', $server_bans);
-        $this->view->set('vars', (isset($vars) ? (object)$vars : new stdClass()));
+        $this->view->set('vars', (isset($vars) ? (object) $vars : new stdClass()));
 
         $this->view->setDefaultView('components' . DS . 'modules' . DS . 'teamspeak' . DS);
 
@@ -1596,10 +1599,9 @@ class Teamspeak extends Module
 
             if ($output->status) {
                 $accounts = count($output->servers);
-            } else if (isset($output->code) && $output->code == 1281) {
+            } elseif (isset($output->code) && $output->code == 1281) {
                 $accounts = 0;
             }
-            
         } catch (Exception $e) {
             // Nothing to do
         }
@@ -1611,6 +1613,7 @@ class Teamspeak extends Module
      * Updates the module row meta number of accounts.
      *
      * @param stdClass $module_row A stdClass object representing a single server
+     * @param mixed $increase
      */
     private function updateAccountCount($module_row, $increase = true)
     {
@@ -1641,6 +1644,10 @@ class Teamspeak extends Module
      * Validates whether or not the connection details are valid by attempting to fetch
      * the number of accounts that currently reside on the server.
      *
+     * @param mixed $password
+     * @param mixed $hostname
+     * @param mixed $username
+     * @param mixed $port
      * @return bool True if the connection is valid, false otherwise
      */
     public function validateConnection($password, $hostname, $username, $port)
@@ -1717,6 +1724,10 @@ class Teamspeak extends Module
      * @param string $host The host to the TeamSpeak server
      * @param string $user The user to connect as
      * @param string $pass The hash-pased password to authenticate with
+     * @param mixed $hostname
+     * @param mixed $username
+     * @param mixed $password
+     * @param mixed $port
      * @return TeamspeakApi The TeamspeakApi instance
      */
     private function getApi($hostname, $username, $password, $port = 10011)

@@ -16,8 +16,7 @@
                 if (!empty($server_bans->bans)) {
                     foreach ($server_bans->bans as $ban) {
                         $date = date('M d, Y', $ban->created);
-                        $rule = !empty($ban->ip) ? $ban->ip : $ban->lastnickname;
-            ?>
+                        $rule = !empty($ban->ip) ? $ban->ip : $ban->lastnickname; ?>
                 <tr>
                     <td><?php $this->Html->_($date); ?></td>
                     <td><?php $this->Html->_($ban->banid); ?></td>
@@ -26,21 +25,19 @@
                     <td>
                         <?php
                             $this->Form->create();
-                            $this->Form->fieldHidden('action', 'unban_client');
-                            $this->Form->fieldHidden('banid', $ban->banid);
-                        ?>
+                        $this->Form->fieldHidden('action', 'unban_client');
+                        $this->Form->fieldHidden('banid', $ban->banid); ?>
                             <button class="btn btn-default btn-sm btn-success">
                                 <i class="fa fa-check"></i> <?php $this->_('Teamspeak.tab_client_bans.action_unban_client'); ?>
                             </button>
                         <?php
-                            $this->Form->end();
-                        ?>
+                            $this->Form->end(); ?>
                     </td>
                 </tr>
             <?php
                     }
                 } else {
-            ?>
+                    ?>
                 <tr>
                     <td colspan="5"><?php $this->_('Teamspeak.tab_client_bans.text_no_bans'); ?></td>
                 </tr>

@@ -15,23 +15,22 @@
             <?php
                 if (!empty($log->log)) {
                     foreach ($log->log as $log) {
-            ?>
+                        ?>
                 <tr>
                     <td><?php $this->Html->_($log->date); ?></td>
                     <td>
                         <?php
                             if ($log->type == 'WARNING') {
                                 $status_class = 'warning';
-                            } else if ($log->type == 'INFO') {
+                            } elseif ($log->type == 'INFO') {
                                 $status_class = 'info';
-                            } else if ($log->type == 'DANGER') {
+                            } elseif ($log->type == 'DANGER') {
                                 $status_class = 'danger';
                             } else {
                                 $status_class = 'success';
-                            }
-                        ?>
-                        <span class="label label-<?php $this->Html->_($status_class);?>">
-                            <?php $this->_('Teamspeak.tab_client_logs.type_' . $this->Html->_($log->type, true));?>
+                            } ?>
+                        <span class="label label-<?php $this->Html->_($status_class); ?>">
+                            <?php $this->_('Teamspeak.tab_client_logs.type_' . $this->Html->_($log->type, true)); ?>
                         </span>
                     </td>
                     <td><?php $this->Html->_($log->function); ?></td>
@@ -41,7 +40,7 @@
             <?php
                     }
                 } else {
-            ?>
+                    ?>
                 <tr>
                     <td colspan="5"><?php $this->_('Teamspeak.tab_client_logs.text_no_logs'); ?></td>
                 </tr>
